@@ -1,8 +1,8 @@
 const Hapi = require('hapi')
 const server = new Hapi.Server()
+const port = process.env.PORT
 const inert = require('inert')
 const plugins = [inert]
-const port = process.env.PORT || 4000
 
 server.connection({ port: port })
 
