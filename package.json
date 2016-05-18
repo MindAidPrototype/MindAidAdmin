@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"node src/server.js",
+    "start": "node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/MindAidPrototype/MindAidAdmin#readme",
   "dependencies": {
-    "hapi": "^13.4.0"
+    "hapi": "^13.4.0",
+    "inert": "^4.0.0"
   }
 }
