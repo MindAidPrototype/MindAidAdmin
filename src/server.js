@@ -2,8 +2,9 @@ const Hapi = require('hapi')
 const server = new Hapi.Server()
 const inert = require('inert')
 const plugins = [inert]
+const port = process.env.PORT || 4000
 
-server.connection({ port: 4000 })
+server.connection({ port: port })
 
 server.register(plugins, error => {
   if (error) throw error
