@@ -20,6 +20,7 @@
   "homepage": "https://github.com/MindAidPrototype/MindAidAdmin#readme",
   "dependencies": {
     "hapi": "^13.4.0",
-    "inert": "^4.0.0"
+    "inert": "^4.0.0",
+    "mongodb": "^2.1.19"
   }
 }
