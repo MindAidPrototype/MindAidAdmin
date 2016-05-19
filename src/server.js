@@ -34,8 +34,15 @@ server.register([Inert, Vision], error => {
       method: 'GET',
       path: '/refer',
       handler: (request, reply) => {
-        const arrObjs = [{q: 1, text: 'fist'}, {q: 2, text: 'second'}]
-        reply.view('refer', {objs: arrObjs})
+        MongoClient.connect(url, (err, db) => {
+          if (err) return err
+          console.log('Connected correctly to server')
+          dbMethods.getReferrals(db, (response) => {
+            console.log('get referrals: ', response, 'type: ', typeof response)
+            const arrObjs = response
+            reply.view('refer', {objs: arrObjs})
+          })
+        })
       }
     },
     {
@@ -45,9 +52,11 @@ server.register([Inert, Vision], error => {
         MongoClient.connect(url, (err, db) => {
           if (err) return err
           console.log('Connected correctly to server')
-          dbMethods.insertReferrals(db, () => {
-            console.log('referrals inserted')
-            reply('populating db')
+          dbMethods.dropCollections(db, () => {
+            dbMethods.insertReferrals(db, (res) => {
+              console.log('referrals inserted')
+              reply('populating with: ' + res.ops.map(el => el.text)[0] + ', ' + res.ops.map(el => el.text)[1] + '...')
+            })
           })
         })
       }
@@ -59,9 +68,9 @@ server.register([Inert, Vision], error => {
         MongoClient.connect(url, (err, db) => {
           if (err) return err
           console.log('Connected correctly to server')
-          dbMethods.getReferrals(db, () => {
-            console.log('get referrals')
-            reply('get referrals')
+          dbMethods.getReferrals(db, (response) => {
+            console.log('get referrals', response)
+            reply(response)
           })
         })
       }

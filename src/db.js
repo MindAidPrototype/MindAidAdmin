@@ -7,16 +7,19 @@ const dropCollections = (db, callback) => {
 }
 
 const insertReferrals = (db, callback) => {
-  db.collection('referrals').insert({
-    location: 'national',
-    link: 'google.com',
-    text: {
-      header: 'NHS',
-      phone: '0190743356',
-      address: '14 Palmers Road',
-      description: 'NHS walk in clinic for young people'
-    }
-  }, (err, result) => {
+  db.collection('referrals').insertMany([{
+    q: 1,
+    text: 'first question'},
+    {q: 2, text: 'second question'
+    // location: 'national',
+    // link: 'google.com',
+    // text: {
+    //   header: 'NHS',
+    //   phone: '0190743356',
+    //   address: '14 Palmers Road',
+    //   description: 'NHS walk in clinic for young people'
+    // }
+  }], (err, result) => {
     if (err) throw err
     console.log('inserted data')
     callback(result)
