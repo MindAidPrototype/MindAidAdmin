@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "nodemon src/index.js",
+    "test": "nodemon tests/runner.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,9 @@
     "inert": "^4.0.0",
     "path": "^0.12.7",
     "vision": "^4.1.0"
+  },
+  "devDependencies": {
+    "shot": "^3.0.1",
+    "tape": "^4.5.1"
   }
 }

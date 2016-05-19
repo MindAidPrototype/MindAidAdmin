@@ -5,22 +5,16 @@ module.exports = (
     {
       method: 'GET',
       path: '/',
-      handler: (request, reply) => {
-        reply.file('public/index.html')
-      }
-    },
-    {
-      method: 'GET',
-      path: '/sayhello',
-      handler: (request, reply) => {
-        reply('stuff from server 2')
+      handler: function (request, reply) {
+        reply('index')
       }
     },
     {
       method: 'GET',
       path: '/refer',
       handler: function (request, reply) {
-        reply.view('refer')
+        const arrObjs = [{q: 1, text: 'fist question'}, {q: 2, text: 'second question'}]
+        reply.view('refer', {objs: arrObjs})
       }
     },
     {
@@ -32,6 +26,5 @@ module.exports = (
         }
       }
     }
-    
   ]
 )
