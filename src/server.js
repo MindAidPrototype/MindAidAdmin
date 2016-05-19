@@ -1,11 +1,12 @@
 const Hapi = require('hapi')
 const server = new Hapi.Server()
+const MongoClient = require('mongodb').MongoClient
+const dbMethods = require('./db.js')
+const url = 'mongodb://localhost:27017/mindaiddb'
 const port = process.env.PORT || 4000
 const Inert = require('inert')
-//const Routes = require('./routes')
 const Vision = require('vision')
 const handlebars = require('handlebars')
-const Path = require('path')
 
 server.connection({port})
 
@@ -33,9 +34,50 @@ server.register([Inert, Vision], error => {
       method: 'GET',
       path: '/refer',
       handler: (request, reply) => {
-
         const arrObjs = [{q: 1, text: 'fist'}, {q: 2, text: 'second'}]
         reply.view('refer', {objs: arrObjs})
+      }
+    },
+    {
+      method: 'GET',
+      path: '/populatedb',
+      handler: function (request, reply) {
+        MongoClient.connect(url, (err, db) => {
+          if (err) return err
+          console.log('Connected correctly to server')
+          dbMethods.insertReferrals(db, () => {
+            console.log('referrals inserted')
+            reply('populating db')
+          })
+        })
+      }
+    },
+    {
+      method: 'GET',
+      path: '/getreferrals',
+      handler: function (request, reply) {
+        MongoClient.connect(url, (err, db) => {
+          if (err) return err
+          console.log('Connected correctly to server')
+          dbMethods.getReferrals(db, () => {
+            console.log('get referrals')
+            reply('get referrals')
+          })
+        })
+      }
+    },
+    {
+      method: 'GET',
+      path: '/cleardb',
+      handler: function (request, reply) {
+        MongoClient.connect(url, (err, db) => {
+          if (err) return err
+          console.log('Connected correctly to server')
+          dbMethods.dropCollections(db, () => {
+            console.log('dropped')
+            reply('drop')
+          })
+        })
       }
     },
     {
