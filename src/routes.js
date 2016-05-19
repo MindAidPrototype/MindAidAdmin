@@ -1,3 +1,5 @@
+const Path = require('path')
+
 module.exports = (
   [
     {
@@ -16,10 +18,20 @@ module.exports = (
     },
     {
       method: 'GET',
-      path: '/{filename*}',
-      handler: (request, reply) => {
-        reply.file('public/' + request.params.filename)
+      path: '/refer',
+      handler: function (request, reply) {
+        reply.view('refer')
+      }
+    },
+    {
+      method: 'GET',
+      path: '/public/{param*}',
+      handler: {
+        directory: {
+          path: Path.join(__dirname, '/../public')
+        }
       }
     }
+    
   ]
 )
