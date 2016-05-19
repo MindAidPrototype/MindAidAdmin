@@ -19,7 +19,10 @@
   },
   "homepage": "https://github.com/MindAidPrototype/MindAidAdmin#readme",
   "dependencies": {
+    "handlebars": "^4.0.5",
     "hapi": "^13.4.0",
-    "inert": "^4.0.0"
+    "inert": "^4.0.0",
+    "path": "^0.12.7",
+    "vision": "^4.1.0"
   }
 }
