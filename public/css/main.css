@@ -1,5 +1,4 @@
 body {
-  background-color: white;
   margin: 0;
 }
 
@@ -33,6 +32,16 @@ a {
   bottom: 0;
   color: white;
   padding: 1vw 0 0 1vw;
+}
+
+#homeList li {
+  list-style-type: none;
+  text-align: center;
+  margin: auto;
+  width: 60%;
+  border: 1px solid red;
+  border-radius: 5%;
+  margin-top: 2%;
 }
 
 @media screen and (max-width: 500px) {
