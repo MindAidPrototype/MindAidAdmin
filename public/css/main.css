@@ -45,21 +45,12 @@ a {
     padding: 3vw;
   }
 
-  a {
-    text-decoration: none;
-    color: black;
-  }
-
   #homeLink {
-    float: right;
     margin: 5vw 3vw 0 0;
     font-size: 5vw;
   }
   #footer {
-    position: fixed;
     height: 20vw;
-    width: 100%;
-    bottom: 0;
     padding: 1vw 0 0 5vw;
   }
 }
