@@ -3,23 +3,10 @@ const dropCollection = (db, collection, callback) => {
   callback()
 }
 
-// const insertQuestions = (db, callback) => {
-//   db.collection('questions').insertMany([
-//     {
-//       q: 1,
-//       text: 'first question'
-//     },
-//     {
-//       q: 2,
-//       text: 'second question'
-//     }
-//   ], (err, result) => {
-//     if (err) throw err
-//     console.log('inserted data', result)
-//     console.log(result)
-//     callback(result)
-//   })
-// }
+const emptySingleCollection = (db, collection, callback) => {
+  db.collection(collection).remove({})
+  callback()
+}
 
 const insertObjectIntoCollection = (db, collection, data, callback) => {
   db.collection(collection).insert(data, (err, result) => {
@@ -28,15 +15,6 @@ const insertObjectIntoCollection = (db, collection, data, callback) => {
   })
 }
 
-// location: 'national',
-// link: 'google.com',
-// text: {
-//   header: 'NHS',
-//   phone: '0190743356',
-//   address: '14 Palmers Road',
-//   description: 'NHS walk in clinic for young people'
-// }
-
 const getQuestions = (db, callback) => {
   db.collection('questions').find({}).toArray((err, res) => {
     if(err) throw err
@@ -44,9 +22,20 @@ const getQuestions = (db, callback) => {
   })
 }
 
+const dummyData = {
+  location: 'national',
+  link: 'google.com',
+  text: {
+    header: 'NHS',
+    phone: '0190743356',
+    address: '14 Palmers Road',
+    description: 'NHS walk in clinic for young people'
+  }
+}
 module.exports = {
   dropCollection,
-  // insertQuestions,
   getQuestions,
-  insertObjectIntoCollection
+  insertObjectIntoCollection,
+  emptySingleCollection,
+  dummyData
 }
