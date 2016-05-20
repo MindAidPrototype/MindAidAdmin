@@ -40,7 +40,12 @@ module.exports = (
     method: 'GET',
     path: '/about',
     handler: (request, reply) => {
-      reply.view('about')
+      reply.view('about', {
+        about: {
+          title: 'Mind Aid',
+          description: 'Description of Mind Aid'
+        }
+      })
     }
   },
   {
