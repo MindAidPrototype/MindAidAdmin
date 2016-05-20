@@ -24,16 +24,56 @@ module.exports = (
   },
   {
     method: 'GET',
-    path: '/questions',
+    path: '/screen',
     handler: (request, reply) => {
       MongoClient.connect(url, (err, db) => {
         if (err) return err
         dbHelpers.getQuestions(db, (response) => {
           const arrObjs = response
-          reply.view('questions', {objs: arrObjs})
+          reply.view('screen', {objs: arrObjs})
           db.close()
         })
       })
+    }
+  },
+  {
+    method: 'GET',
+    path: '/about',
+    handler: (request, reply) => {
+      reply.view('about', {
+        about: {
+          title: 'Mind Aid',
+          description: 'Description of Mind Aid'
+        }
+      })
+    }
+  },
+  {
+    method: 'GET',
+    path: '/learn',
+    handler: (request, reply) => {
+      reply.view('learn')
+    }
+  },
+  {
+    method: 'GET',
+    path: '/listen',
+    handler: (request, reply) => {
+      reply.view('listen')
+    }
+  },
+  {
+    method: 'GET',
+    path: '/refer',
+    handler: (request, reply) => {
+      reply.view('refer')
+    }
+  },
+  {
+    method: 'GET',
+    path: '/remind',
+    handler: (request, reply) => {
+      reply.view('remind')
     }
   },
   {
