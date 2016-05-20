@@ -7,12 +7,12 @@ const url = 'mongodb://localhost:27017/mindaidtest'
 
 const tape = require('tape')
 
-const findAll = (db, cb2) => {
-  db.collection('questions').find({}).toArray((err2, res2) => {
-    if(err2) throw err2
-    cb2(res2)
-  })
-}
+// const findAll = (db, cb2) => {
+//   db.collection('questions').find({}).toArray((err2, res2) => {
+//     if(err2) throw err2
+//     cb2(res2)
+//   })
+// }
 
 tape('test that data is inserted into the db', t => {
   const data = {key: 'value'}
