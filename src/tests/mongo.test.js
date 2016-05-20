@@ -1,16 +1,11 @@
-const MongoClient = require('mongodb').MongoClient
-// const dbMethods = require('../db.js')
+'use strict'
 
-const url = 'mongodb://localhost:27017/mindaiddb'
+const MongoClient = require('mongodb').MongoClient
+const dbHelpers = require('../dbHelpers.js')
+
+const url = 'mongodb://localhost:27017/mindaidtest'
 
 const tape = require('tape')
-
-const insertKey = (db, cb1) => {
-  db.collection('quetsions').insert({key: 'value'}, (err1, res1) => {
-    if(err1) throw err1
-    cb1(res1)
-  })
-}
 
 const findAll = (db, cb2) => {
   db.collection('questions').find({}).toArray((err2, res2) => {
@@ -19,13 +14,24 @@ const findAll = (db, cb2) => {
   })
 }
 
-const dropCollections = (db, cb3) => {
-  db.collection('questions').drop((err3, res3) => {
-    if(err3) throw err3
-    cb3(res3)
+tape('test that data is inserted into the db', t => {
+  const data = {key: 'value'}
+  const expected = 1
+  let actual
+  MongoClient.connect(url, (err, db) => {
+    dbHelpers.dropCollection(db, 'questions', () => {
+      db.collection('questions').insert({fjldsf: 'd'}, (err67, result) => {
+        console.log('>>>>>>', result, '<<<<<<')
+        db.collection('questions').find({}, () => {
+          dbHelpers.insertObjectIntoCollection(db, 'quesitons', data, (result2) => {
+            actual = result2.insertedCount
+            t.equal(expected, actual)
+            t.end()
+            db.close()
+          })
+        })
+      })
+
+    })
   })
-}
-
-tape('dropCollections', t => {
-
 })

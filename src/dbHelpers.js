@@ -1,5 +1,5 @@
-const dropCollections = (db, callback) => {
-  db.collection('questions').drop()
+const dropCollection = (db, collection, callback) => {
+  db.collection(collection).drop()
   callback()
 }
 
@@ -15,7 +15,15 @@ const insertQuestions = (db, callback) => {
     }
   ], (err, result) => {
     if (err) throw err
-    console.log('inserted data')
+    console.log('inserted data', result)
+    console.log(result)
+    callback(result)
+  })
+}
+
+const insertObjectIntoCollection = (db, collection, data, callback) => {
+  db.collection(collection).insert(data, (err, result) => {
+    if(err) throw err
     callback(result)
   })
 }
@@ -37,7 +45,8 @@ const getQuestions = (db, callback) => {
 }
 
 module.exports = {
-  dropCollections,
+  dropCollection,
   insertQuestions,
-  getQuestions
+  getQuestions,
+  insertObjectIntoCollection
 }
