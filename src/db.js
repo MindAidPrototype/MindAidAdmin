@@ -1,9 +1,6 @@
 const dropCollections = (db, callback) => {
-  db.collection('questions').drop((err, result) => {
-    if(err) throw err
-    console.log('dropping data')
-    callback(result)
-  })
+  db.collection('questions').drop()
+  callback()
 }
 
 const insertQuestions = (db, callback) => {
