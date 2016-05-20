@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon src/index.js",
     "test": "node src/tests/runner.js",
-    "tests": "nodemon src/tests/runner.js",
+    "testmon": "nodemon src/tests/runner.js",
     "coverage": "node ./node_modules/.bin/istanbul cover ./src/tests/runner.js"
   },
   "repository": {
