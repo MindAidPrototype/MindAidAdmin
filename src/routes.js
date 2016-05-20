@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient
-const dbMethods = require('./db.js')
+const dbMethods = require('./dbHelpers.js')
 
 const url = 'mongodb://localhost:27017/mindaiddb'
 
