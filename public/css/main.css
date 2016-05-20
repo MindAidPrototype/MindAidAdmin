@@ -1,5 +1,4 @@
 body {
-  background-color: white;
   margin: 0;
 }
 
@@ -35,6 +34,16 @@ a {
   padding: 1vw 0 0 1vw;
 }
 
+#homeList li {
+  list-style-type: none;
+  text-align: center;
+  margin: auto;
+  width: 60%;
+  border: 1px solid red;
+  border-radius: 5%;
+  margin-top: 2%;
+}
+
 @media screen and (max-width: 500px) {
   #logo {
     height: 15vw;
@@ -45,21 +54,12 @@ a {
     padding: 3vw;
   }
 
-  a {
-    text-decoration: none;
-    color: black;
-  }
-
   #homeLink {
-    float: right;
     margin: 5vw 3vw 0 0;
     font-size: 5vw;
   }
   #footer {
-    position: fixed;
     height: 20vw;
-    width: 100%;
-    bottom: 0;
     padding: 1vw 0 0 5vw;
   }
 }
