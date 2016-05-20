@@ -1,3 +1,65 @@
 body {
-  background-color: orange;
+  background-color: white;
+  margin: 0;
+}
+
+#logo {
+  height: 6vw;
+  margin-left: 1.5vw;
+}
+
+#navbar {
+  background-color: #1266E3;
+  padding: 0.5vw;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+#homeLink {
+  float: right;
+  margin: 2vw 2vw 0 0;
+  font-size: 2vw;
+  color: white;
+}
+
+#footer {
+  background-color: #282828;
+  position: fixed;
+  height: 5vw;
+  width: 100%;
+  bottom: 0;
+  color: white;
+  padding: 1vw 0 0 1vw;
+}
+
+@media screen and (max-width: 500px) {
+  #logo {
+    height: 15vw;
+    margin-left: 3vw;
+  }
+
+  #navbar {
+    padding: 3vw;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  #homeLink {
+    float: right;
+    margin: 5vw 3vw 0 0;
+    font-size: 5vw;
+  }
+  #footer {
+    position: fixed;
+    height: 20vw;
+    width: 100%;
+    bottom: 0;
+    padding: 1vw 0 0 5vw;
+  }
 }
