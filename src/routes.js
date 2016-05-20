@@ -14,13 +14,13 @@ module.exports = (
   },
   {
     method: 'GET',
-    path: '/refer',
+    path: '/questions',
     handler: (request, reply) => {
       MongoClient.connect(url, (err, db) => {
         if (err) return err
-        dbMethods.getReferrals(db, (response) => {
+        dbMethods.getQuestions(db, (response) => {
           const arrObjs = response
-          reply.view('refer', {objs: arrObjs})
+          reply.view('questions', {objs: arrObjs})
           db.close()
         })
       })
@@ -33,7 +33,7 @@ module.exports = (
       MongoClient.connect(url, (err, db) => {
         if (err) return err
         dbMethods.dropCollections(db, () => {
-          dbMethods.insertReferrals(db, (res) => {
+          dbMethods.insertQuestions(db, (res) => {
             reply('populating with: ' + res.ops.map(el => el.text)[0] + ', ' + res.ops.map(el => el.text)[1] + '...')
             db.close()
           })
@@ -58,4 +58,3 @@ module.exports = (
     }
   }
 ])
-

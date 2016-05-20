@@ -19,12 +19,12 @@ tape('tests if / returns status code 200', t => {
   })
 })
 
-tape('tests if /refer returns status code 200', t => {
+tape('tests if /questions returns status code 200', t => {
   var options = {
     method: 'GET',
-    url: '/refer'
+    url: '/questions'
   }
-  server.inject(options, function (res) {
+  server.inject(options, (res) => {
     const actual1 = res.statusCode
     const actual2 = res.payload.indexOf('<html>') > -1
     const expected1 = 200
@@ -80,4 +80,3 @@ tape('teardown', t => {
   server.stop()
   t.end()
 })
-
