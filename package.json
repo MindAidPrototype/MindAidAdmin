@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.js",
-    "test": "nodemon tests/runner.js"
+    "test": "node src/tests/runner.js",
+    "testmon": "nodemon src/tests/runner.js",
+    "coverage": "node ./node_modules/.bin/istanbul cover ./src/tests/runner.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,7 @@
     "vision": "^4.1.0"
   },
   "devDependencies": {
+    "istanbul": "^0.4.3",
     "shot": "^3.0.1",
     "tape": "^4.5.1"
   }
