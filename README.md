@@ -1,5 +1,7 @@
 # MindAidAdmin
 
+Ensure when developing to make regular commits and to regularly check the repo for any pull requests
+
 ### What?
 
 #### A site for editing the materials on MindAid
