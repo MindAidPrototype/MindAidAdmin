@@ -3,6 +3,7 @@ const server = new Hapi.Server()
 const port = process.env.PORT || 4000
 const Inert = require('inert')
 const Vision = require('vision')
+require('env2')('config.env')
 
 const views = require('./views.js')
 
