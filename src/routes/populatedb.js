@@ -1,7 +1,7 @@
 const MongoClient = require('mongodb').MongoClient
 const dbHelpers = require('../dbHelpers.js')
 
-const url = 'mongodb://localhost:27017/mindaiddb'
+const url = process.env.MONGODB_URI
 
 const testArrOfObjs = [
   {
