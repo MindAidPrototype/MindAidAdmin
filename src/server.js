@@ -3,7 +3,6 @@ const server = new Hapi.Server()
 const port = process.env.PORT || 4000
 const Inert = require('inert')
 const Vision = require('vision')
-
 const views = require('./views.js')
 
 const routes = [
