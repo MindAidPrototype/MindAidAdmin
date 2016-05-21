@@ -17,6 +17,15 @@ const getQuestions = (database, callback) => {
   })
 }
 
+const data = {key: 'value'}
+
+const getQuestions = (database, callback) => {
+  database.collection('questions').find({}).toArray((rre, ser) => {
+    if(rre) throw rre
+    callback(ser)
+  })
+}
+
 const tape = require('tape')
 
 tape('test that data is inserted into the db', t => {
