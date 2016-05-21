@@ -1,2 +1,7 @@
 <h1>{{about.title}}</h1>
-<p>{{about.description}}</p>
+{{#each about.body}}
+  <h4>{{this.subtitle}}</h4>
+  {{#each this.paragraphs}}
+    <p>{{this}}</p>
+  {{/each}}
+{{/each}}
