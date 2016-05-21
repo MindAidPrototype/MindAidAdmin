@@ -1,17 +1,8 @@
 const MongoClient = require('mongodb').MongoClient
 const dbHelpers = require('../dbHelpers.js')
+require('env2')('config.env')
 
-const url = 'mongodb://localhost:27017/mindaiddb'
-// const testArrOfObjs = [
-//   {
-//     q: 1,
-//     text: 'first question'
-//   },
-//   {
-//     q: 2,
-//     text: 'second question'
-//   }
-// ]
+const url = process.env.MONGODB_URI
 
 module.exports = {
   method: 'GET',

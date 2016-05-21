@@ -2,11 +2,10 @@
 
 const MongoClient = require('mongodb').MongoClient
 const dbHelpers = require('../dbHelpers.js')
+const tape = require('tape')
+require('env2')('config.env')
 
-const dbuser = process.env.DBUSER
-const dbpassword = process.env.DBPASSWORD
-
-const url = `mongodb://${dbuser}:${dbpassword}@ds011933.mlab.com:11933/mindaidadmin`
+const url = process.env.MONGODB_URI
 
 const data = {key: 'value'}
 
@@ -16,8 +15,6 @@ const getQuestions = (database, callback) => {
     callback(ser)
   })
 }
-
-const tape = require('tape')
 
 tape('test that data is inserted into the db', t => {
   const expected = 1
