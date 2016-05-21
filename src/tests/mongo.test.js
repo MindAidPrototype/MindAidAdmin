@@ -2,13 +2,8 @@
 
 const MongoClient = require('mongodb').MongoClient
 const dbHelpers = require('../dbHelpers.js')
-require('env2')('config.env')
 
-const dbuser = process.env.DBUSER
-const dbpassword = process.env.DBPASSWORD
-
-const url = `mongodb://${dbuser}:${dbpassword}@ds011933.mlab.com:11933/mindaidadmin`
-
+const url = 'mongodb://localhost:27017/mindaidtest'
 const data = {key: 'value'}
 
 const getQuestions = (database, callback) => {
