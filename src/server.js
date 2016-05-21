@@ -14,7 +14,7 @@ server.register([Inert, Vision], error => {
   server.views({
     engines: {html: handlebars},
     relativeTo: __dirname + '/../',
-    path: './views',
+    path: './views/views',
     layoutPath: './views/layout',
     layout: 'default',
     partialsPath: './views/partials/'
