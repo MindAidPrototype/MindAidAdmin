@@ -5,7 +5,7 @@ const dbHelpers = require('../dbHelpers.js')
 const tape = require('tape')
 require('env2')('config.env')
 
-const url = process.env.MONGODB_URI
+const url = 'mongodb://localhost:27017/mindaidtest' || process.env.MONGODB_URI
 
 const data = {key: 'value'}
 
