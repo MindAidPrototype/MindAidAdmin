@@ -24,13 +24,13 @@ module.exports = (
   },
   {
     method: 'GET',
-    path: '/screen',
+    path: '/questions',
     handler: (request, reply) => {
       MongoClient.connect(url, (err, db) => {
         if (err) return err
         dbHelpers.getQuestions(db, (response) => {
           const arrObjs = response
-          reply.view('screen', {objs: arrObjs})
+          reply.view('questions', {objs: arrObjs})
           db.close()
         })
       })
