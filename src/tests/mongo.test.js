@@ -2,9 +2,8 @@
 
 const MongoClient = require('mongodb').MongoClient
 const dbHelpers = require('../dbHelpers.js')
-require('env2')('config.env')
 
-const url = process.env.PROD_MONGODB
+const url = 'mongodb://heroku_mtsfrp2c:iqi55gdj6bt7s6pkdbhp77itlu@ds011903.mlab.com:11903/heroku_mtsfrp2c'
 const data = {key: 'value'}
 
 const getQuestions = (database, callback) => {
