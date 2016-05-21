@@ -2,20 +2,12 @@
 
 const MongoClient = require('mongodb').MongoClient
 const dbHelpers = require('../dbHelpers.js')
+require('env2')('config.env')
 
 const dbuser = process.env.DBUSER
 const dbpassword = process.env.DBPASSWORD
 
 const url = `mongodb://${dbuser}:${dbpassword}@ds011933.mlab.com:11933/mindaidadmin`
-
-const data = {key: 'value'}
-
-const getQuestions = (database, callback) => {
-  database.collection('questions').find({}).toArray((rre, ser) => {
-    if(rre) throw rre
-    callback(ser)
-  })
-}
 
 const data = {key: 'value'}
 
