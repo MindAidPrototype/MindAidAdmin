@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/MindAidPrototype/MindAidAdmin#readme",
   "dependencies": {
+    "env2": "^2.1.0",
     "handlebars": "^4.0.5",
     "hapi": "^13.4.0",
     "inert": "^4.0.0",
