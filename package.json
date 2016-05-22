@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/start.js",
-    "npm startmon": "nodemon src/start.js",
+    "startmon": "nodemon src/start.js",
     "test": "node src/tests/runner.js",
     "testmon": "nodemon src/tests/runner.js",
     "coverage": "node ./node_modules/.bin/istanbul cover ./src/tests/runner.js"
