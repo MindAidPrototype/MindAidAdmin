@@ -1,9 +1,10 @@
 module.exports = (Cookie) => ({
   method: 'GET',
-  path: '/',
+  path: '/login',
   handler: (request, reply) => {
     request.state.cookie === Cookie ?
-      reply.view('index') :
-        reply.redirect('/login')
+      reply.redirect('/') :
+        reply.view('login', null, {layout: 'login'})
   }
 })
+

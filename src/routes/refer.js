@@ -1,7 +1,10 @@
-module.exports = {
+module.exports = (Cookie) => ({
   method: 'GET',
   path: '/refer',
   handler: (request, reply) => {
-    reply.view('refer') 
+    request.state.cookie === Cookie ?
+      reply.view('refer') :
+        reply.redirect('/login')
   }
-}
+})
+
