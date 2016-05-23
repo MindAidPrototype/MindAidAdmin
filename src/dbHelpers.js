@@ -18,7 +18,7 @@ const insertObjectIntoCollection = (db, collection, data, callback) => {
 }
 
 const getQuestions = (db, callback) => {
-  db.collection('content').find({}).toArray((err, res) => {
+  db.collection('questions').find({}).toArray((err, res) => {
     if(err) throw err
     callback(res)
   })
