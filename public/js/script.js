@@ -22,7 +22,7 @@ const editContent = (i) => {
   document.getElementsByClassName('aboutParagraph')[i].innerHTML = ''
   document.getElementsByClassName('aboutParagraph')[i].appendChild(input)
   document.getElementsByClassName('aboutParagraph')[i].appendChild(textArea)
-  document.getElementsByClassName('buttonsContainer')[i].children[i].style.visibility = 'hidden'
+  document.getElementsByClassName('buttonsContainer')[i].children[0].style.visibility = 'hidden'
   document.getElementsByClassName('buttonsContainer')[i].children[1].style.visibility = 'hidden'
   const saveButton = document.createElement('button')
   saveButton.innerHTML = 'save'
@@ -32,8 +32,6 @@ const editContent = (i) => {
   cancelButton.innerHTML = 'cancel'
   cancelButton.addEventListener('click', cancelContent)
   document.getElementsByClassName('buttonsContainer')[i].appendChild(cancelButton)
-
-  // changing buttons from edit and delete to save and cancel with correct onclick event changes
 }
 
 const deleteContent = (i) => {
