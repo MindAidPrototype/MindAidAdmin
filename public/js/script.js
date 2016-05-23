@@ -57,8 +57,10 @@ const saveContent = () => {
   xhr.open('post', '/about/save')
   xhr.send(JSON.stringify({
     index: 0,
-    title: document.getElementsByTagName('input')[0].value,
-    paragraph: document.getElementsByTagName('textarea')[0].value
+    data: {
+      subtitle: document.getElementsByTagName('input')[0].value,
+      paragraph: document.getElementsByTagName('textarea')[0].value
+    }
   }))
 }
 

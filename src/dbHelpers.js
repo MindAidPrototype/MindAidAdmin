@@ -1,8 +1,8 @@
 const dropAllCollections = (db, collections, callback) => {
   collections.forEach((collection) => {
     db.collection(collection).drop()
+    callback(collection)
   })
-  callback()
 }
 
 const emptySingleCollection = (db, collection, callback) => {
@@ -26,9 +26,7 @@ const getPageData = (db, collection, callback) => {
 const editData = (db, collection, index, object, callback) => {
   db.collection(collection).find({}).toArray((err, res) => {
     if (err) throw err
-    console.log('res1>>>>', res)
     res[index] = object
-    console.log(res)
     db.collection(collection).remove({})
     db.collection(collection).insert(res)
     callback(res)

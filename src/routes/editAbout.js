@@ -9,15 +9,16 @@ const blah = { 'subtitle': 'Why',
 const url = 'mongodb://localhost:27017/mindaidtest' || process.env.MONGODB_URI
 
 module.exports = (Cookie) => ({
-  method: 'GET',
+  method: 'POST',
   path: '/about/{type}',
   handler: (request, reply) => {
     if (request.state.cookie === Cookie) {
       MongoClient.connect(url, (err, db) => {
         if (err) throw err
+        const parsedPayload = JSON.parse(request.payload)
         switch (request.params.type) {
         case 'save':
-          editData(db, 'about', 1, blah, (res) => {
+          editData(db, 'about', parsedPayload.index, parsedPayload.data, (res) => {
             reply.view('about', {about: res})
           })
           break
