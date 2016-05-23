@@ -16,9 +16,7 @@ module.exports = {
       if (err) return err
       dbHelpers.dropAllCollections(db, collections, (collection) => {
         dbHelpers.insertObjectIntoCollection(db, collection, data[collection], () => {
-
         })
-
       })
     })
     reply('populated b')
