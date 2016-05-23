@@ -17,16 +17,15 @@ const insertObjectIntoCollection = (db, collection, data, callback) => {
   })
 }
 
-const getQuestions = (db, callback) => {
-  db.collection('questions').find({}).toArray((err, res) => {
-    if(err) throw err
+const getPageData = (db, collection, callback) => {
+  db.collection(collection).find({}).toArray((err, res) => {
     callback(res)
   })
 }
 
 module.exports = {
   dropAllCollections,
-  getQuestions,
   insertObjectIntoCollection,
   emptySingleCollection,
+  getPageData
 }

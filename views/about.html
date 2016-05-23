@@ -1,7 +1,14 @@
-<h1>{{about.title}}</h1>
-{{#each about.body}}
-  <h4>{{this.subtitle}}</h4>
-  {{#each this.paragraphs}}
-    <p>{{this}}</p>
+<div id="aboutContainer">
+  <h1>About</h1>
+  {{#each about}}
+    <div class="aboutParagraph">
+      <h4>{{this.subtitle}}</h4>
+      <p>{{this.paragraph}}</p>
+    </div>
+    <div class="buttonsContainer">
+      <button class="aboutEdit editButton">edit</button>
+      <button class="aboutDelete deleteButton">delete</button>
+    </div>
   {{/each}}
-{{/each}}
+  <button id="newSection" class="newSectionButton">New Section</button>
+</div>
