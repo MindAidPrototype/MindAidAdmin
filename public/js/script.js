@@ -17,9 +17,11 @@ const editContent = (index) => {
   // changing title and paragraph to text boxes with correct content
   const title = document.getElementsByClassName('aboutParagraph')[index].children[0].innerHTML
   const paragraph = document.getElementsByClassName('aboutParagraph')[index].children[1].innerHTML
-  document.getElementsByClassName('aboutParagraph')[index].innerHTML = ''
+  // document.getElementsByClassName('aboutParagraph')[index].innerHTML = ''
   const titleText = document.createElement('input')
+  titleText.classList.add('titleInput')
   titleText.value = title
+  paragraph.className = 'paragraphInput'
   const paragraphText = document.createElement('input')
   paragraphText.value = paragraph
   document.getElementsByClassName('aboutParagraph')[index].appendChild(titleText)
@@ -39,18 +41,20 @@ const deleteContent = () => {
 }
 
 const saveContent = () => {
-  const xhr = new XMLHttpRequest()
-  xhr.onreadystatechange = () => {
-    if(xhr.readyState === 4 && xhr.status === 200) {
-      location.reload()
-    }
-  }
-  xhr.open('post', '/about/save')
-  xhr.send(JSON.stringify({
-    index: 0,
-    title: document.getElementsByTagName('input')[0].value,
-    paragraph: document.getElementsByTagName('input')[1].value
-  }))
+  console.log('hi ivan')
+  //console.log(document.getElementsByClassName('titleInput')[0].value)
+  // const xhr = new XMLHttpRequest()
+  // xhr.onreadystatechange = () => {
+  //   if(xhr.readyState === 4 && xhr.status === 200) {
+  //     // location.reload()
+  //   }
+  // }
+  // xhr.open('post', '/about/save')
+  // xhr.send(JSON.stringify({
+  //   index: 0,
+  //   title: document.getElementsByClassName('titleInput')[0].value,
+  //   paragraph: document.getElementsByTagName('input')[1].value
+  // }))
 }
 
 const cancelContent = () => {

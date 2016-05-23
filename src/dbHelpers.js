@@ -23,9 +23,14 @@ const getPageData = (db, collection, callback) => {
   })
 }
 
+const editData = () => {
+  
+}
+
 module.exports = {
   dropAllCollections,
   insertObjectIntoCollection,
   emptySingleCollection,
-  getPageData
+  getPageData,
+  editData
 }
