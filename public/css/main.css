@@ -88,7 +88,7 @@ a {
 
 #aboutContainer {
   margin: 0 auto;
-  padding-top: 64px;
+  padding-top: 100px;
   max-width: 640px;
   width: 94%;
 }
@@ -102,14 +102,14 @@ a {
   margin-left: 40%;
 }
 
-.editButton {
+.aboutEditButton {
   background-color: red;
   float: left;
   margin-right: 1em;
 
 }
 
-.deleteButton {
+.aboutDeleteButton {
   background-color: pink;
 }
 
