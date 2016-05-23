@@ -1,5 +1,7 @@
-const dropCollection = (db, collection, callback) => {
-  db.collection(collection).drop()
+const dropAllCollections = (db, collections, callback) => {
+  collections.forEach((collection) => {
+    db.collection(collection).drop()
+  })
   callback()
 }
 
@@ -22,20 +24,9 @@ const getQuestions = (db, callback) => {
   })
 }
 
-const dummyData = {
-  location: 'national',
-  link: 'google.com',
-  text: {
-    header: 'NHS',
-    phone: '0190743356',
-    address: '14 Palmers Road',
-    description: 'NHS walk in clinic for young people'
-  }
-}
 module.exports = {
-  dropCollection,
+  dropAllCollections,
   getQuestions,
   insertObjectIntoCollection,
   emptySingleCollection,
-  dummyData
 }
