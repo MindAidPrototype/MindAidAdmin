@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient
-const dbHelpers = require('../dbHelpers.js')
+const getPageData = require('../dbHelpers.js').getPageData
 require('env2')('config.env')
 
 const url = 'mongodb://localhost:27017/mindaidtest' || process.env.MONGODB_URI
@@ -11,7 +11,7 @@ module.exports = (Cookie) => ({
     request.state.cookie === Cookie ?
       MongoClient.connect(url, (err, db) => {
         if (err) return err
-        dbHelpers.getQuestions(db, (response) => {
+        getPageData(db, 'questions', (response) => {
           const arrObjs = response
           console.log(arrObjs)
           reply.view('questions', {objs: arrObjs})
