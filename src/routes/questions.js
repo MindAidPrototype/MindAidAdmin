@@ -13,6 +13,7 @@ module.exports = (Cookie) => ({
         if (err) return err
         dbHelpers.getQuestions(db, (response) => {
           const arrObjs = response
+          console.log(arrObjs)
           reply.view('questions', {objs: arrObjs})
           db.close()
         })
