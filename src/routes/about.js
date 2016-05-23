@@ -1,6 +1,6 @@
 module.exports = (Cookie) => ({
   method: 'GET',
-  path: '/about',
+  path: '/about/',
   handler: (request, reply) => {
     request.state.cookie === Cookie ?
       reply.view('about', {
@@ -18,6 +18,15 @@ module.exports = (Cookie) => ({
           ]
         }
       }) :
+        reply.redirect('/login')
+  }
+},
+{
+  method: 'POST',
+  path: '/about/{type}',
+  handler: (request, reply) => {
+    request.state.cookie === Cookie ?
+     :
         reply.redirect('/login')
   }
 })
