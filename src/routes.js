@@ -1,7 +1,7 @@
 const MongoClient = require('mongodb').MongoClient
 const dbHelpers = require('./dbHelpers.js')
 
-const url = 'mongodb://localhost:27017/mindaiddb'
+const url = 'mongodb://localhost:27017/mindaidadmin'
 const testArrOfObjs = [
   {
     q: 1,
@@ -12,6 +12,10 @@ const testArrOfObjs = [
     text: 'second question'
   }
 ]
+
+const collections = ['about', 'refer']
+
+const data = require('./data.js')
 
 module.exports = (
 [
@@ -30,6 +34,7 @@ module.exports = (
         if (err) return err
         dbHelpers.getQuestions(db, (response) => {
           const arrObjs = response
+          console.log(response[4])
           reply.view('screen', {objs: arrObjs})
           db.close()
         })
@@ -82,10 +87,14 @@ module.exports = (
     handler: function (request, reply) {
       MongoClient.connect(url, (err, db) => {
         if (err) return err
-        dbHelpers.dropCollection(db, 'questions', () => {
-          dbHelpers.insertObjectIntoCollection(db, 'questions', testArrOfObjs, (res) => {
-            reply('populating with: ' + res.ops.map(el => el.text)[0] + ', ' + res.ops.map(el => el.text)[1] + '...')
-            db.close()
+        dbHelpers.dropCollection(db, collections, () => {
+          dbHelpers.insertObjectIntoCollection(db, 'about', data.about, (resAbout) => {
+            console.log(resAbout)
+            dbHelpers.insertObjectIntoCollection(db, 'refer', data.refer, (resRefer) => {
+              console.log(resRefer)
+              reply('populated b')
+              db.close()
+            })
           })
         })
       })

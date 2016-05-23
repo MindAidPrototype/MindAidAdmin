@@ -1,5 +1,7 @@
-const dropCollection = (db, collection, callback) => {
-  db.collection(collection).drop()
+const dropCollection = (db, collections, callback) => {
+  collections.forEach((collection) => {
+    db.collection(collection).drop()
+  })
   callback()
 }
 
@@ -16,7 +18,7 @@ const insertObjectIntoCollection = (db, collection, data, callback) => {
 }
 
 const getQuestions = (db, callback) => {
-  db.collection('questions').find({}).toArray((err, res) => {
+  db.collection('content').find({}).toArray((err, res) => {
     if(err) throw err
     callback(res)
   })
