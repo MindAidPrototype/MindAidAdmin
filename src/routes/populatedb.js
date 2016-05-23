@@ -25,7 +25,7 @@ module.exports = {
   handler: function (request, reply) {
     MongoClient.connect(url, (err, db) => {
       if (err) return err
-      dbHelpers.dropCollection(db, collections, () => {
+      dbHelpers.dropAllCollections(db, collections, () => {
         dbHelpers.insertObjectIntoCollection(db, 'about', data.about, (resAbout) => {
           console.log(resAbout)
           dbHelpers.insertObjectIntoCollection(db, 'refer', data.refer, (resRefer) => {

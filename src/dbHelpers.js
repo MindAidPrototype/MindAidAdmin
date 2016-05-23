@@ -1,4 +1,4 @@
-const dropCollection = (db, collections, callback) => {
+const dropAllCollections = (db, collections, callback) => {
   collections.forEach((collection) => {
     db.collection(collection).drop()
   })
@@ -35,7 +35,7 @@ const dummyData = {
   }
 }
 module.exports = {
-  dropCollection,
+  dropAllCollections,
   getQuestions,
   insertObjectIntoCollection,
   emptySingleCollection,
