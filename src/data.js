@@ -1,6 +1,9 @@
 const about = [
   { 'subtitle': 'What',
     'paragraph': 'Mind aid is a resource for teachers to...'
+  },
+  { 'subtitle': 'What2',
+      'paragraph': 'Mind aid is a resource for teachers to...2'
   }
 ]
 
