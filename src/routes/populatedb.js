@@ -14,12 +14,9 @@ module.exports = {
   handler: function (request, reply) {
     MongoClient.connect(url, (err, db) => {
       if (err) return err
-      dbHelpers.dropAllCollections(db, collections, () => {
-        dbHelpers.insertObjectIntoCollection(db, 'about', data.about, () => {
-          dbHelpers.insertObjectIntoCollection(db, 'refer', data.refer, () => {
-            reply('populated b')
-            db.close()
-          })
+      dbHelpers.dropAllCollections(db, collections, (collection) => {
+        dbHelpers.insertObjectIntoCollection(db, collection, data[collection], () => {
+          reply('populated b')
         })
       })
     })

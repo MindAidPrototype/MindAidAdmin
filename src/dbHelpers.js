@@ -1,8 +1,8 @@
 const dropAllCollections = (db, collections, callback) => {
   collections.forEach((collection) => {
     db.collection(collection).drop()
+    callback(collection)
   })
-  callback()
 }
 
 const emptySingleCollection = (db, collection, callback) => {
