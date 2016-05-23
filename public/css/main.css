@@ -41,9 +41,16 @@ a {
   text-align: center;
   margin: auto;
   width: 60%;
-  border: 1px solid red;
+  border: 1px solid lightgrey;
   border-radius: 5%;
-  margin-top: 2%;
+  margin: 1vw;
+  padding: 0.5vw 3vw;
+}
+
+#homeList {
+  position: absolute;
+  left: 35%;
+  top: 8vw;
 }
 
 #loginContainer {
@@ -68,6 +75,11 @@ a {
   width: 20%;
   left: 3vw;
   top: 8vw;
+}
+
+#logout {
+  float: right;
+  padding: 0.8vw 2vw 0 0;
 }
 
 @media screen and (max-width: 500px) {

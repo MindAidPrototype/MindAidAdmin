@@ -13,7 +13,7 @@ const password = process.env.PASSWORD
 server.connection({port})
 
 server.state('cookie', {
-  ttl: 60 * 1000,
+  ttl: 60 * 60 * 1000,
   isHttpOnly: true,
   encoding: 'iron',
   password: process.env.IRONPASSWORD
