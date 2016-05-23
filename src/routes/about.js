@@ -9,11 +9,11 @@ module.exports = (Cookie) => ({
           body: [
             {
               subtitle: 'What',
-              paragraphs: ['about mindaid']
+              paragraph: 'about mindaid'
             },
             {
               subtitle: 'Why',
-              paragraphs: ['why mindaid']
+              paragraph: 'why mindaid'
             }
           ]
         }
