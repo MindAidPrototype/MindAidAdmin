@@ -13,25 +13,25 @@ const logout = () => {
 
 document.getElementById('logout').addEventListener('click', logout)
 
-const editContent = () => {
+const editContent = (index) => {
   // changing title and paragraph to text boxes with correct content
-  const title = document.getElementsByClassName('aboutParagraph')[0].children[0].innerHTML
-  const paragraph = document.getElementsByClassName('aboutParagraph')[0].children[1].innerHTML
-  document.getElementsByClassName('aboutParagraph')[0].innerHTML = ''
+  const title = document.getElementsByClassName('aboutParagraph')[index].children[0].innerHTML
+  const paragraph = document.getElementsByClassName('aboutParagraph')[index].children[1].innerHTML
+  document.getElementsByClassName('aboutParagraph')[index].innerHTML = ''
   const titleText = document.createElement('input')
   titleText.value = title
   const paragraphText = document.createElement('input')
   paragraphText.value = paragraph
-  document.getElementsByClassName('aboutParagraph')[0].appendChild(titleText)
-  document.getElementsByClassName('aboutParagraph')[0].appendChild(paragraphText)
+  document.getElementsByClassName('aboutParagraph')[index].appendChild(titleText)
+  document.getElementsByClassName('aboutParagraph')[index].appendChild(paragraphText)
 
   // changing buttons from edit and delete to save and cancel with correct onclick event changes
-  document.getElementsByClassName('aboutEditButton')[0].innerHTML = 'save'
-  document.getElementsByClassName('aboutDeleteButton')[0].innerHTML = 'cancel'
-  document.getElementsByClassName('aboutEditButton')[0].removeEventListener('click', editContent)
-  document.getElementsByClassName('aboutEditButton')[0].addEventListener('click', saveContent)
-  document.getElementsByClassName('aboutDeleteButton')[0].removeEventListener('click', deleteContent)
-  document.getElementsByClassName('aboutDeleteButton')[0].addEventListener('click', cancelContent)
+  document.getElementsByClassName('aboutEditButton')[index].innerHTML = 'save'
+  document.getElementsByClassName('aboutDeleteButton')[index].innerHTML = 'cancel'
+  document.getElementsByClassName('aboutEditButton')[index].removeEventListener('click', editContent)
+  document.getElementsByClassName('aboutEditButton')[index].addEventListener('click', saveContent)
+  document.getElementsByClassName('aboutDeleteButton')[index].removeEventListener('click', deleteContent)
+  document.getElementsByClassName('aboutDeleteButton')[index].addEventListener('click', cancelContent)
 }
 
 const deleteContent = () => {
@@ -59,7 +59,10 @@ const cancelContent = () => {
 }
 
 if(document.getElementsByClassName('aboutEditButton').length) {
-  document.getElementsByClassName('aboutEditButton')[0].addEventListener('click', editContent)
+  const aboutEditButton = Array.from(document.getElementsByClassName('aboutEditButton'))
+  aboutEditButton.forEach((el, i) => {
+    el.addEventListener('click', () => { editContent(i) })
+  })
 }
 
 if(document.getElementsByClassName('aboutDeleteButton').length) {
