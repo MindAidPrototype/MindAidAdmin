@@ -21,11 +21,9 @@
     "key-spacing": [2, { "beforeColon": false, "afterColon": true, "mode": "strict" }],
     "no-unused-vars": [1, { "vars": "local", "args": "after-used" }],
     "no-shadow": [2, { "builtinGlobals": true, "allow": ["_", "__", "done", "cb", "resolve", "reject"] }],
-    "strict": [2, "global"],
     "comma-dangle": [2, "only-multiline"],
     "no-undef": 2,
     "no-multi-spaces": 2,
-    "no-unused-expressions": 2,
     "no-multiple-empty-lines": [2, { "max": 1, "maxEOF": 1 }]
   }
 }

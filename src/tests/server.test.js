@@ -1,6 +1,5 @@
 const tape = require('tape')
 const server = require('../server.js')
-const dbHelpers = require('../dbHelpers.js')
 
 tape('tests if the server starts', t => {
   t.equal(true, true)
