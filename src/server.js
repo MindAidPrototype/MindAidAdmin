@@ -4,6 +4,7 @@ const port = process.env.PORT || 4000
 const Inert = require('inert')
 const Vision = require('vision')
 const views = require('./views.js')
+require('env2')('config.env')
 
 const Cookie = process.env.COOKIE
 const username = process.env.USERNAME
