@@ -35,24 +35,21 @@ module.exports = {
     }
   ],
   'listen': [
-    {
-      'letterL': 'listen non-judgmentally and empathically gather',
+    { 'listen':
+      {'letterL': 'listen non-judgmentally and empathically gather',
       'letterI': 'gather Information, ask open questions, don\'t push',
       'letterS': 'assess people\'s risk of harm, Self-harm or Suicide',
       'letterT': 'tell them useful information about their problem, reassure',
       'letterE': 'encouraging self-help and other support strategies',
       'letterN': 'not alone, follow up and direct to appropriate professional help'
-    }
-  ],
-  'conversation_starters': [
-    {
-      'conversation_starters': [
-        'Can you tell me a bit more about what happened?',
-        'How were you feeling at the time?',
-        'How are you feeling about it now?'
-      ]
-    }
-  ],
+    },
+    'conversation_starters': [
+      'Can you tell me a bit more about what happened?',
+      'How were you feeling at the time?',
+      'How are you feeling about it now?'
+    ]
+      }
+    ],
   'learn': [
     {
       'category': 'The Aggressive/Difficult Child',
@@ -60,7 +57,10 @@ module.exports = {
     },
     {
       'category': 'The Sad And Isolated Child',
-      'things_to_know': ['Young people get sad, tearful, and lonely. This is entirely normal, and to be expected.']
+      'things_to_know': [
+        'Young people get sad, tearful, and lonely. This is entirely normal, and to be expected.',
+        'fbjkebvrejkberjgkrelb gjerk'
+      ]
     }
   ],
   'questions': [
