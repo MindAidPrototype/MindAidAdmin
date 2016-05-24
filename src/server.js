@@ -27,6 +27,7 @@ const routes = [
   require('./routes/index.js')(Cookie),
   require('./routes/questions.js')(Cookie),
   require('./routes/about.js')(Cookie),
+  require('./apis/about.js'),
   require('./routes/editAbout.js')(Cookie),
   require('./routes/learn.js')(Cookie),
   require('./routes/listen.js')(Cookie),
