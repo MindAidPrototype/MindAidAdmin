@@ -1,9 +1,20 @@
+const MongoClient = require('mongodb').MongoClient
+const getPageData = require('../dbHelpers.js').getPageData
+
+const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/mindaidtest'
+
 module.exports = (Cookie) => ({
   method: 'GET',
   path: '/learn',
   handler: (request, reply) => {
     request.state.cookie === Cookie ?
-      reply.view('learn') :
-        reply.redirect('/login')
+    MongoClient.connect(url, (err, db) => {
+      if (err) throw err
+      getPageData(db, 'learn', (res) => {
+        console.log(res)
+        reply.view('learn', {learn: res})
+      })
+
+    }) : reply.redirect('/login')
   }
 })

@@ -1,1 +1,14 @@
 <h1>hello learn page</h1>
+
+{{#each learn}}
+  <div class="aboutParagraph">
+    <h4>{{this.category}}</h4>
+    {{#each this.things_to_know}}
+      <p>{{this}}</p>
+    {{/each}}
+  </div>
+  <div class="buttonsContainer">
+    <button class="aboutEditButton">edit</button>
+    <button class="aboutDeleteButton">delete</button>
+  </div>
+{{/each}}

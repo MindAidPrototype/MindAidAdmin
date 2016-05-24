@@ -3,12 +3,13 @@ const server = new Hapi.Server()
 const port = process.env.PORT || 4000
 const Inert = require('inert')
 const Vision = require('vision')
-require('env2')('./config.env')
 const views = require('./views.js')
+require('env2')('config.env')
 
 const Cookie = process.env.COOKIE
 const username = process.env.USERNAME
 const password = process.env.PASSWORD
+const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/mindaidtest'
 
 server.connection({port})
 
