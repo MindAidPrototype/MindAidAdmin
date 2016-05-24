@@ -79,9 +79,10 @@ const addNewSection = () => {
   aboutParagraph.appendChild(textArea)
   const editButton = document.createElement('button')
   editButton.innerHTML = 'save'
+  editButton.addEventListener('click', editContent)
   const deleteButton = document.createElement('button')
   deleteButton.innerHTML = 'cancel'
-  deleteButton.addEventListener('click',)
+  deleteButton.addEventListener('click', deleteContent)
   const buttonsContainer = document.createElement('div')
   buttonsContainer.classList.add('buttonsContainer')
   buttonsContainer.appendChild(editButton)
