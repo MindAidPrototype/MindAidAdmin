@@ -67,6 +67,27 @@ const cancelContent = () => {
   location.reload()
 }
 
+const addNewSection = () => {
+  document.getElementById('newSection').innerHTML = ''
+  const input = document.createElement('input')
+  const textArea = document.createElement('textarea')
+  const aboutParagraph = document.createElement('div')
+  aboutParagraph.classList.add('aboutParagraph')
+  aboutParagraph.appendChild(input)
+  aboutParagraph.appendChild(textArea)
+  const editButton = document.createElement('button')
+  editButton.innerHTML = 'save'
+  const deleteButton = document.createElement('button')
+  deleteButton.innerHTML = 'cancel'
+  deleteButton.addEventListener('click',)
+  const buttonsContainer = document.createElement('div')
+  buttonsContainer.classList.add('buttonsContainer')
+  buttonsContainer.appendChild(editButton)
+  buttonsContainer.appendChild(deleteButton)
+  document.getElementById('newSection').appendChild(aboutParagraph)
+  document.getElementById('newSection').appendChild(buttonsContainer)
+}
+
 if(document.getElementsByClassName('aboutEditButton').length) {
   const aboutEditButton = Array.from(document.getElementsByClassName('aboutEditButton'))
   aboutEditButton.forEach((el, i) => {
@@ -79,5 +100,8 @@ if(document.getElementsByClassName('aboutDeleteButton').length) {
   aboutDeleteButton.forEach((el, i) => {
     el.addEventListener('click', () => { deleteContent(i) })
   })
-  document.getElementsByClassName('aboutDeleteButton')[0].addEventListener('click', deleteContent)
+}
+
+if(document.getElementById('newSection')) {
+  document.getElementById('newSection').addEventListener('click', addNewSection)
 }
