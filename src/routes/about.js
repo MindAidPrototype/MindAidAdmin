@@ -1,8 +1,7 @@
 const MongoClient = require('mongodb').MongoClient
 const getPageData = require('../dbHelpers.js').getPageData
-require('env2')('config.env')
 
-const url = 'mongodb://localhost:27017/mindaidtest' || process.env.MONGODB_URI
+const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/mindaidtest'
 
 module.exports = (Cookie) => ({
   method: 'GET',
