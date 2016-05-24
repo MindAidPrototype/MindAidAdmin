@@ -15,6 +15,7 @@ module.exports = (Cookie) => ({
         console.log(res)
         reply.view('about', {about: res})
       })
+
     }) : reply.redirect('/login')
   }
 })

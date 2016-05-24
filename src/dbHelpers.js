@@ -1,8 +1,8 @@
 const dropAllCollections = (db, collections, callback) => {
   collections.forEach((collection) => {
     db.collection(collection).drop()
+    callback(collection)
   })
-  callback()
 }
 
 const emptySingleCollection = (db, collection, callback) => {
@@ -23,8 +23,14 @@ const getPageData = (db, collection, callback) => {
   })
 }
 
-const editData = () => {
-  
+const editData = (db, collection, index, object, callback) => {
+  db.collection(collection).find({}).toArray((err, res) => {
+    if (err) throw err
+    res[index] = object
+    db.collection(collection).remove({})
+    db.collection(collection).insert(res)
+    callback(res)
+  })
 }
 
 module.exports = {
