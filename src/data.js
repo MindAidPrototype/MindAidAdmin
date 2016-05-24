@@ -48,8 +48,8 @@ module.exports = {
       'How were you feeling at the time?',
       'How are you feeling about it now?'
     ]
-      }
-    ],
+    }
+  ],
   'learn': [
     {
       'category': 'The Aggressive/Difficult Child',
@@ -71,70 +71,68 @@ module.exports = {
       ]
     }
   ],
-  'refer': [
-    {
-      'section': 'emergency',
-      'location': 'national',
-      'info': [
-        {
+  'refer': [{
+    'national': [
+      {
+        'section': 'emergency',
+        'info': {
           'phone': '999',
-          'link': 'dkjflk.com',
+          'link': 'http://dkjflk.com',
           'advice': 'Go to their nearest Accident and Emergency (A&E)'
         }
-      ]
-    },
-    {
-      'section': 'nhs',
-      'location': 'national',
-      'info': {
-        'phone': '111',
-        'link': 'www.nhsdirect.nhs.uk',
-        'advice': 'They can tell you about your local crisis support services, and also offer health advice 24 hours a day, 365 days a year'
+      },
+      {
+        'section': 'nhs',
+        'info': {
+          'phone': '111',
+          'link': 'http://www.nhsdirect.nhs.uk',
+          'advice': 'They can tell you about your local crisis support services, and also offer health advice 24 hours a day, 365 days a year'
+        }
       }
-    },
-    {
-      'section': 'in_school',
-      'location': 'local',
-      'info': [
-        {
-          'name': 'Mrs Jain',
-          'position': 'SENCO',
-          'description': 'Offers consultations about children you are concerned about any morning 9-12',
-          'email': 'MJain@school.ac.uk',
-          'phone': '07123456789'
-        }
-      ]
-    },
-    {
-      'section': 'in_community',
-      'location': 'local',
-      'info': [
-        {
-          'name': 'Zoe',
-          'position': 'Primary Mental Health Worker (PMHW)',
-          'description': ' in school fortnightly on Thursdays',
-          'email': 'zoe@school.ac.uk',
-          'phone': '',
-          'link': 'http://www.youngminds.org.uk/contact'
-        }
-      ]
-    },
-    {
-      'section': 'self_referral',
-      'location': 'local',
-      'info': [
-        {
-          'service_name': 'Surrey East Young People Walk in Service',
-          'description': 'Drop in charity provision for mental health',
-          'email': 'surrey@surrey.com',
-          'links': [
-            {
-              'name': 'Parents and Youth Info',
-              'link': 'camhs.org'
-            }
-          ]
-        }
-      ]
-    }
+    ],
+    'local': [
+      {
+        'section': 'in_school',
+        'info': [
+          {
+            'name': 'Mrs Jain',
+            'position': 'SENCO',
+            'description': 'Offers consultations about children you are concerned about any morning 9-12',
+            'email': 'MJain@school.ac.uk',
+            'phone': '07123456789'
+          }
+        ]
+      },
+      {
+        'section': 'in_community',
+        'info': [
+          {
+            'name': 'Zoe',
+            'position': 'Primary Mental Health Worker (PMHW)',
+            'description': ' in school fortnightly on Thursdays',
+            'email': 'zoe@school.ac.uk',
+            'phone': '',
+            'link': 'http://www.youngminds.org.uk/contact'
+          }
+        ]
+      },
+      {
+        'section': 'self_referral',
+        'info': [
+          {
+            'service_name': 'Surrey East Young People Walk in Service',
+            'description': 'Drop in charity provision for mental health',
+            'email': 'surrey@surrey.com',
+            'links': [
+              {
+                'name': 'Parents and Youth Info',
+                'link': 'http://camhs.org'
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
   ]
 }
