@@ -1,10 +1,5 @@
 const MongoClient = require('mongodb').MongoClient
 var editData = require('../dbHelpers.js').editData
-require('env2')('config.env')
-
-const blah = { 'subtitle': 'Why',
-  'paragraph': 'dont know'
-}
 
 const url = 'mongodb://localhost:27017/mindaidtest' || process.env.MONGODB_URI
 
