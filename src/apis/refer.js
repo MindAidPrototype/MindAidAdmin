@@ -5,11 +5,11 @@ const url = 'mongodb://localhost:27017/mindaidtest' || process.env.MONGODB_URI
 
 module.exports = {
   method: 'GET',
-  path: '/aboutapi',
+  path: '/referapi',
   handler: (request, reply) => {
     MongoClient.connect(url, (err, db) => {
       if (err) throw err
-      getPageData(db, 'about', (res) => {
+      getPageData(db, 'refer', (res) => {
         reply(res)
       })
     })
