@@ -12,6 +12,7 @@ module.exports = (Cookie) => ({
       if (err) throw err
       getPageData(db, 'about', (res) => {
         reply.view('about', {about: res})
+        db.close()
       })
     }) : reply.redirect('/login')
   }
