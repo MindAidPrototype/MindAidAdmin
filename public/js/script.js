@@ -1,3 +1,5 @@
+/* --- default page --- */
+
 const logout = () => {
   console.log('logging out')
   const xhr = new XMLHttpRequest()
@@ -12,6 +14,10 @@ const logout = () => {
 }
 
 document.getElementById('logout').addEventListener('click', logout)
+
+/* --- default page --- */
+
+/* --- about page --- */
 
 const editContent = (i) => {
   // changing title and paragraph to text boxes with correct content
@@ -108,3 +114,66 @@ if(document.getElementsByClassName('aboutDeleteButton').length) {
 if(document.getElementById('newSection')) {
   document.getElementById('newSection').addEventListener('click', addNewSection)
 }
+
+/* --- about page --- */
+
+/* --- listen page --- */
+
+const editQuestion = () => {
+  document.getElementsByClassName('listenEditButton')[0].style.visibility = 'hidden'
+  document.getElementsByClassName('listenDeleteButton')[0].style.visibility = 'hidden'
+  const saveButton = document.createElement('button')
+  saveButton.innerHTML = 'save'
+  saveButton.addEventListener('click', saveQuestion)
+  const cancelButton = document.createElement('button')
+  cancelButton.innerHTML = 'cancel'
+  cancelButton.addEventListener('click', cancelQuestion)
+  document.getElementsByClassName('listenButtonsContainer')[0].appendChild(saveButton)
+  document.getElementsByClassName('listenButtonsContainer')[0].appendChild(cancelButton)
+  const question = document.getElementsByClassName('listenQuestions')[0].innerHTML
+  document.getElementsByClassName('listenQuestions')[0].innerHTML = ''
+  textArea = document.createElement('textarea')
+  textArea.value = question
+  document.getElementsByClassName('listenQuestions')[0].appendChild(textArea)
+}
+
+const deleteQuestion = () => {
+  const xhr = new XMLHttpRequest()
+  xhr.onreadystatechange = () => {
+    if(xhr.readyState === 4 && xhr.status === 200) console.log(xhr.responseText)
+  }
+  xhr.open('post', '/delete')
+  xhr.send('delete question')
+}
+
+const saveQuestion = () => {
+  const xhr = new XMLHttpRequest()
+  xhr.onreadystatechange = () => {
+    if(xhr.readyState === 4 && xhr.status === 200) {
+      location.reload()
+    }
+  }
+  xhr.open('post', '/about/save')
+  xhr.send(JSON.stringify({
+    index: 0,
+    data: document.getElementsByTagName('textarea')[0].value
+  }))
+}
+
+const cancelQuestion = () => {
+  location.reload()
+}
+
+if(document.getElementsByClassName('listenEditButton').length){
+  document.getElementsByClassName('listenEditButton')[0].addEventListener('click', editQuestion)
+}
+
+if(document.getElementsByClassName('listenDeleteButton').length){
+  document.getElementsByClassName('listenDeleteButton')[0].addEventListener('click', deleteQuestion)
+}
+
+/* --- listen page --- */
+
+
+
+
