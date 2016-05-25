@@ -1,7 +1,7 @@
 const MongoClient = require('mongodb').MongoClient
 var editData = require('../dbHelpers.js').editData
 
-const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/mindaidtest'
+const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/mindaid'
 
 module.exports = (Cookie) => ({
   method: 'POST',
