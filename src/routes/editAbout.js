@@ -14,6 +14,7 @@ module.exports = (Cookie) => ({
         switch (request.params.type) {
         case 'save':
           editData(db, 'about', parsedPayload.index, parsedPayload.data, (res) => {
+            console.log(request.payload)
             reply.view('about', {about: res})
           })
           break
