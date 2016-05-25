@@ -24,7 +24,6 @@ module.exports = (Cookie) => ({
         case 'delete':
           deleteData(db, 'about', index, () => {
             reply('worked')
-            db.close()
           })
           break
         default:
