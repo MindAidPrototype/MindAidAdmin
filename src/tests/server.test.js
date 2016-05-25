@@ -40,7 +40,7 @@ const testEndPointWithCookie = (endpoint, content) => {
       method: 'GET',
       url: endpoint === 'index' ? '/' : '/' + endpoint,
       headers: {
-        cookie: 'cookie=' + encoded  
+        cookie: 'cookie=' + encoded
       }
     }
     server.inject(options, res => {
@@ -101,3 +101,21 @@ tape('tests params* route to see if it findes the correct public files', t => {
     t.end()
   })
 })
+
+tape('test about/{params*} endpoint', t => {
+  const options = {
+    method: 'post',
+    url: '/about/save',
+  }
+  server.inject(options, res => {
+    const actualStatusCode = res.statusCode
+    const actualPayload = res.payload
+
+    const expectedStatusCode = 200
+    const expectedPayload =
+
+    t.equal(actualStatusCode, expectedStatusCode)
+
+    const
+  })
+} )
