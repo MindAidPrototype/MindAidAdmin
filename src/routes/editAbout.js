@@ -16,17 +16,20 @@ module.exports = (Cookie) => ({
 
         switch (request.params.type) {
         case 'save':
-          editData(db, 'about', index, data, (res) => {
-            reply.view('about', {about: res})
+          editData(db, 'about', index, data, () => {
+            reply('worked')
+            db.close()
           })
           break
         case 'delete':
-          deleteData(db, 'about', index, (res) => {
-            reply.view('about', {about: res})
+          deleteData(db, 'about', index, () => {
+            reply('worked')
+            db.close()
           })
           break
         default:
-          reply.redirect('/about')
+          reply('wrong endpoint')
+          db.close()
         }
       })
     } else {

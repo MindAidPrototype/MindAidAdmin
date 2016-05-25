@@ -106,16 +106,24 @@ tape('test about/{params*} endpoint', t => {
   const options = {
     method: 'post',
     url: '/about/save',
+    headers: {
+      cookie: 'cookie=' + encoded
+    },
+    payload: JSON.stringify(JSON.stringify({
+      index: 0,
+      data: [{
+        key: 'value'
+      }]
+    }))
   }
   server.inject(options, res => {
     const actualStatusCode = res.statusCode
-    const actualPayload = res.payload
-
     const expectedStatusCode = 200
-    const expectedPayload =
+    const actualPayload = res.payload
+    const expectedPayload = 'worked'
 
-    t.equal(actualStatusCode, expectedStatusCode)
-
-    const
+    t.equal(actualStatusCode, expectedStatusCode, 'correct status code')
+    t.equal(actualPayload, expectedPayload, 'contains the about string')
+    t.end()
   })
-} )
+})
