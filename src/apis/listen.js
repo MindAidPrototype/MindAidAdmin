@@ -10,7 +10,6 @@ module.exports = {
     MongoClient.connect(url, (err, db) => {
       if (err) throw err
       getPageData(db, 'listen', (res) => {
-        console.log(res)
         reply(res)
       })
     })

@@ -22,7 +22,7 @@ module.exports = (Cookie) => ({
           })
           break
         case 'delete':
-          deleteData(db, 'about', index, () => {
+          deleteData(db, 'about', index, (res) => {
             reply('worked')
             db.close()
           })
