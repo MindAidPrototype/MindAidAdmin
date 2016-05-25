@@ -5,19 +5,21 @@ const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/mindaidtest'
 
 const data = require('../data.js')
 const collections = Object.getOwnPropertyNames(data)
-console.log(collections)
 
 module.exports = {
   method: 'GET',
   path: '/populatedb',
   handler: function (request, reply) {
     MongoClient.connect(url, (err, db) => {
-      if (err) return err
+      if (err) throw err
       dbHelpers.dropAllCollections(db, collections, (collection) => {
         dbHelpers.insertObjectIntoCollection(db, collection, data[collection], () => {
+          if(collection === collections[collections.length -1]) {
+            db.close()
+            reply('populated b')
+          }
         })
       })
     })
-    reply('populated b')
   }
 }

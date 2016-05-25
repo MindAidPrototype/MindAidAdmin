@@ -11,8 +11,8 @@ module.exports = (Cookie) => ({
     MongoClient.connect(url, (err, db) => {
       if (err) throw err
       getPageData(db, 'listen', (res) => {
-        console.log(res, '<----- listen res')
         reply.view('listen', {listen: res[0]})
+        db.close()
       })
 
     }) : reply.redirect('/login')
