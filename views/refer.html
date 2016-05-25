@@ -18,25 +18,43 @@
   <div>
     {{#each this.info}}
       <div>
-        <h3> Name: {{this.name}} </h3>
+        <h3>Name: {{this.name}} </h3>
         <p>Postion: {{this.position}}</p>
         <p>Description: {{this.description}}</p>
         <p>Email: {{this.email}}</p>
-        <p> Phone: {{this.phone}} </p>
+        <p>Phone: {{this.phone}} </p>
       </div>
     {{/each}}
   </div>
   {{/each}}
 </div>
-
-
-  'info': [
-    {
-      'name': 'Mrs Jain',
-      'position': 'SENCO',
-      'description': 'Offers consultations about children you are concerned about any morning 9-12',
-      'email': 'MJain@school.ac.uk',
-      'phone': '07123456789'
-    }
-  ]
-}
+<div class="in_community">
+  <h2>In Community</h2>
+  {{#each refer.in_community}}
+  <div>
+    <h3>Name: {{this.name}} </h3>
+    <p>Postion: {{this.position}}</p>
+    <p>Description: {{this.description}}</p>
+    <p>Email: {{this.email}}</p>
+    <p>Phone: {{this.phone}} </p>
+    {{#each this.links}}
+      <p>Site name {{this.name}}</p>
+      <p>link {{this.link}}</p>
+    {{/each}}
+  </div>
+  {{/each}}
+</div>
+<div class="self_referral">
+  <h2>In Community</h2>
+  {{#each refer.self_referral}}
+  <div>
+    <h3>Name: {{this.service_name}} </h3>
+    <p>Description: {{this.description}}</p>
+    <p>Email: {{this.email}}</p>
+    {{#each this.links}}
+      <p>Site name {{this.name}}</p>
+      <p>link {{this.link}}</p>
+    {{/each}}
+  </div>
+  {{/each}}
+</div>
