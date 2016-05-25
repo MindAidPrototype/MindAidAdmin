@@ -1,38 +1,64 @@
 const tape = require('tape')
 const server = require('../server.js')
+require('env2')('./config.env')
+const encoded = process.env.ENCODED
 
-tape('tests if the server starts', t => {
-  t.equal(true, true)
-  t.end()
-})
+const endPoints = ['index', 'questions', 'about', 'learn', 'listen', 'refer', 'remind']
+const contents = [
+  '<ul id="homeList"',
+  'questions',
+  'About Page',
+  'Learn Page',
+  'listen page',
+  'refer page',
+  'remind page'
+]
 
-tape('tests if / returns status code 200', t => {
-  var options = {
-    method: 'GET',
-    url: '/'
-  }
-  server.inject(options, function (res) {
-    const actual = res.statusCode
-    const expected = 200
-    t.equal(actual, expected)
-    t.end()
+const combined = endPoints.map((endpoint, i) => ({endpoint, content: contents[i]}))
+
+const testEndPointNoCookie = endpoint => {
+  tape('tests get request to ' + endpoint + ' returns with no cookie', t => {
+    var options = {
+      method: 'GET',
+      url: endpoint === 'index' ? '/' : '/' + endpoint,
+    }
+    server.inject(options, res => {
+      const actual1 = res.statusCode
+      const expected1 = 302
+      const actual2 = res.headers.location
+      const expected2 = '/login'
+      t.equal(actual1, expected1, 'has status code 302')
+      t.equal(actual2, expected2, 'redirects to the /login endpoint')
+      t.end()
+    })
   })
-})
+}
 
-tape('tests if /questions returns status code 200', t => {
-  var options = {
-    method: 'GET',
-    url: '/questions'
-  }
-  server.inject(options, (res) => {
-    const actual1 = res.statusCode
-    const actual2 = res.payload.indexOf('<html>') > -1
-    const expected1 = 200
-    t.equal(actual1, expected1)
-    t.ok(actual2)
-    t.end()
+const testEndPointWithCookie = (endpoint, content) => {
+  tape('tests get request to ' + endpoint + ' with a cookie', t => {
+    var options = {
+      method: 'GET',
+      url: endpoint === 'index' ? '/' : '/' + endpoint,
+      headers: {
+        cookie: 'cookie=' + encoded  
+      }
+    }
+    server.inject(options, res => {
+      const actual1 = res.statusCode
+      const expected1 = 200
+      const actual2 = res.payload.indexOf('<nav') > -1
+      const actual3 = res.payload.indexOf(content)
+      t.equal(actual1, expected1, 'has status code 200')
+      t.ok(actual2, 'loads the default page')
+      t.ok(actual3, 'loads the correct ' + endpoint + ' page')
+      t.end()
+    })
   })
-})
+}
+
+endPoints.forEach(url => testEndPointNoCookie(url))
+
+combined.forEach(el => testEndPointWithCookie(el.endpoint, el.content))
 
 tape('tests if /populatedb route replys with the correct text', t => {
   var options = {
@@ -41,16 +67,16 @@ tape('tests if /populatedb route replys with the correct text', t => {
   }
   server.inject(options, res => {
     const actual1 = res.statusCode
-    const actual2 = res.payload.substring(0, 16)
+    const actual2 = res.payload
     const expected1 = 200
-    const expected2 = 'populating with:'
+    const expected2 = 'populated b'
     t.equal(actual1, expected1)
     t.equal(actual2, expected2)
     t.end()
   })
 })
 
-tape('tests if /public/js/script.js', t => {
+tape('tests params* route to see if it findes the correct public files', t => {
   var options1 = {
     method: 'get',
     url: '/public/js/script.js'
@@ -74,9 +100,4 @@ tape('tests if /public/js/script.js', t => {
     t.ok(actual2)
     t.end()
   })
-})
-
-tape('teardown', t => {
-  server.stop()
-  t.end()
 })

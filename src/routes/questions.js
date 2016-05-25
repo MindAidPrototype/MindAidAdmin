@@ -12,7 +12,6 @@ module.exports = (Cookie) => ({
         if (err) return err
         getPageData(db, 'questions', (response) => {
           const arrObjs = response
-          console.log(arrObjs)
           reply.view('questions', {objs: arrObjs})
           db.close()
         })
