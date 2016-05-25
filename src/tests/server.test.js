@@ -40,7 +40,7 @@ const testEndPointWithCookie = (endpoint, content) => {
       method: 'GET',
       url: endpoint === 'index' ? '/' : '/' + endpoint,
       headers: {
-        cookie: 'cookie=' + encoded  
+        cookie: 'cookie=' + encoded
       }
     }
     server.inject(options, res => {
@@ -98,6 +98,32 @@ tape('tests params* route to see if it findes the correct public files', t => {
     const actual2 = res.payload.indexOf('background') > -1
     t.equal(actual1, expected1)
     t.ok(actual2)
+    t.end()
+  })
+})
+
+tape('test about/{params*} endpoint', t => {
+  const options = {
+    method: 'post',
+    url: '/about/save',
+    headers: {
+      cookie: 'cookie=' + encoded
+    },
+    payload: JSON.stringify(JSON.stringify({
+      index: 0,
+      data: [{
+        key: 'value'
+      }]
+    }))
+  }
+  server.inject(options, res => {
+    const actualStatusCode = res.statusCode
+    const expectedStatusCode = 200
+    const actualPayload = res.payload
+    const expectedPayload = 'worked'
+
+    t.equal(actualStatusCode, expectedStatusCode, 'correct status code')
+    t.equal(actualPayload, expectedPayload, 'contains the about string')
     t.end()
   })
 })
