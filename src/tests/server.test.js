@@ -60,21 +60,21 @@ endPoints.forEach(url => testEndPointNoCookie(url))
 
 combined.forEach(el => testEndPointWithCookie(el.endpoint, el.content))
 
-// tape('tests if /populatedb route replys with the correct text', t => {
-//   var options = {
-//     method: 'get',
-//     url: '/populatedb'
-//   }
-//   server.inject(options, res => {
-//     const actual1 = res.statusCode
-//     const actual2 = res.payload.substring(0, 16)
-//     const expected1 = 200
-//     const expected2 = 'populating with:'
-//     t.equal(actual1, expected1)
-//     t.equal(actual2, expected2)
-//     t.end()
-//   })
-// })
+tape('tests if /populatedb route replys with the correct text', t => {
+  var options = {
+    method: 'get',
+    url: '/populatedb'
+  }
+  server.inject(options, res => {
+    const actual1 = res.statusCode
+    const actual2 = res.payload
+    const expected1 = 200
+    const expected2 = 'populated b'
+    t.equal(actual1, expected1)
+    t.equal(actual2, expected2)
+    t.end()
+  })
+})
 
 // tape('tests if /public/js/script.js', t => {
 //   var options1 = {

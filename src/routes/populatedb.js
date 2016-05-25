@@ -11,9 +11,10 @@ module.exports = {
   path: '/populatedb',
   handler: function (request, reply) {
     MongoClient.connect(url, (err, db) => {
-      if (err) return err
+      if (err) throw err
       dbHelpers.dropAllCollections(db, collections, (collection) => {
         dbHelpers.insertObjectIntoCollection(db, collection, data[collection], () => {
+          db.close()
         })
       })
     })
