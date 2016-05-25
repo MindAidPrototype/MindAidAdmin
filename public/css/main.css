@@ -126,6 +126,16 @@ a {
   border-radius: 10px;
 }
 
+#listenContainer {
+  border: 1px solid #FAFAFA;
+  background-color: #FAFAFA;
+  border-radius: 10px;
+  padding-top: 64px;
+  max-width: 640px;
+  width: 94%;
+  text-align: center;
+}
+
 @media screen and (max-width: 500px) {
   #logo {
     height: 15vw;

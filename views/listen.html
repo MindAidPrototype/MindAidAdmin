@@ -1,19 +1,26 @@
-<h1>hello listen page</h1>
-<h2>L</h2>
-<p>{{listen.listen.letterL}}</p>
-<h2>I</h2>
-<p>{{listen.listen.letterI}}</p>
-<h2>S</h2>
-<p>{{listen.listen.letterS}}</p>
-<h2>T</h2>
-<p>{{listen.listen.letterT}}</p>
-<h2>E</h2>
-<p>{{listen.listen.letterE}}</p>
-<h2>N</h2>
-<p>{{listen.listen.letterN}}</p>
+<div id="listenCantainer">
+  <h1>hello listen page</h1>
+  <h2>L</h2>
+  <p>{{listen.listen.letterL}}</p>
+  <h2>I</h2>
+  <p>{{listen.listen.letterI}}</p>
+  <h2>S</h2>
+  <p>{{listen.listen.letterS}}</p>
+  <h2>T</h2>
+  <p>{{listen.listen.letterT}}</p>
+  <h2>E</h2>
+  <p>{{listen.listen.letterE}}</p>
+  <h2>N</h2>
+  <p>{{listen.listen.letterN}}</p>
+
+  {{#each listen.conversation_starters}}
+    <p class="listenQuestions">{{this}}</p>
+    <div class="listenButtonsContainer">
+      <button class="listenEditButton">Edit</button>
+      <button class="listenDeleteButton">Delete</button>
+    </div>
+  {{/each}}
+
+</div>
 
 
-
-{{#each listen.conversation_starters}}
-  <p>{{this}}</p>
-{{/each}}
