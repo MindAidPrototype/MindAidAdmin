@@ -90,9 +90,8 @@ module.exports = {
         }
       }
     ],
-    'local': [
+    'in_school': [
       {
-        'section': 'in_school',
         'info': [
           {
             'name': 'Mrs Jain',
@@ -102,7 +101,9 @@ module.exports = {
             'phone': '07123456789'
           }
         ]
-      },
+      }  
+    ],
+    'local': [
       {
         'section': 'in_community',
         'info': [
@@ -112,7 +113,12 @@ module.exports = {
             'description': ' in school fortnightly on Thursdays',
             'email': 'zoe@school.ac.uk',
             'phone': '',
-            'link': 'http://www.youngminds.org.uk/contact'
+            'links': [
+              {
+                'name': 'youth minds',
+                'link': 'http://www.youngminds.org.uk/contact'
+              }
+            ]
           }
         ]
       },

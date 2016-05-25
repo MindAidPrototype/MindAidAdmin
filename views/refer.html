@@ -1,5 +1,6 @@
 <h1>hello refer page</h1>
 <div class="national">
+  <h2>National</h2>
   {{#each refer.national}}
   <div>
     <h2>
@@ -11,3 +12,31 @@
   </div>
   {{/each}}
 </div>
+<div class="in_school">
+  <h2>In School</h2>
+  {{#each refer.in_school}}
+  <div>
+    {{#each this.info}}
+      <div>
+        <h3> Name: {{this.name}} </h3>
+        <p>Postion: {{this.position}}</p>
+        <p>Description: {{this.description}}</p>
+        <p>Email: {{this.email}}</p>
+        <p> Phone: {{this.phone}} </p>
+      </div>
+    {{/each}}
+  </div>
+  {{/each}}
+</div>
+
+
+  'info': [
+    {
+      'name': 'Mrs Jain',
+      'position': 'SENCO',
+      'description': 'Offers consultations about children you are concerned about any morning 9-12',
+      'email': 'MJain@school.ac.uk',
+      'phone': '07123456789'
+    }
+  ]
+}
