@@ -14,10 +14,12 @@ module.exports = {
       if (err) throw err
       dbHelpers.dropAllCollections(db, collections, (collection) => {
         dbHelpers.insertObjectIntoCollection(db, collection, data[collection], () => {
-          db.close()
+          if(collection === collections[collections.length -1]) {
+            db.close()
+            reply('populated b')
+          }
         })
       })
     })
-    reply('populated b')
   }
 }
