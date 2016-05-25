@@ -32,7 +32,7 @@ const editContent = (i) => {
   document.getElementsByClassName('buttonsContainer')[i].children[1].style.visibility = 'hidden'
   const saveButton = document.createElement('button')
   saveButton.innerHTML = 'save'
-  saveButton.addEventListener('click', saveContent)
+  saveButton.addEventListener('click', () => { saveContent(i) })
   document.getElementsByClassName('buttonsContainer')[i].appendChild(saveButton)
   const cancelButton = document.createElement('button')
   cancelButton.innerHTML = 'cancel'
@@ -53,7 +53,7 @@ const deleteContent = (i) => {
   }))
 }
 
-const saveContent = () => {
+const saveContent = i => {
   const xhr = new XMLHttpRequest()
   xhr.onreadystatechange = () => {
     if(xhr.readyState === 4 && xhr.status === 200) {
@@ -62,7 +62,7 @@ const saveContent = () => {
   }
   xhr.open('post', '/about/save')
   xhr.send(JSON.stringify({
-    index: 0,
+    index: i,
     data: {
       subtitle: document.getElementsByTagName('input')[0].value,
       paragraph: document.getElementsByTagName('textarea')[0].value
