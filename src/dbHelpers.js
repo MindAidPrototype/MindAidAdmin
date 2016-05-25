@@ -33,10 +33,24 @@ const editData = (db, collection, index, object, callback) => {
   })
 }
 
+const deleteData = (db, collection, index, callback) => {
+  db.collection(collection).find({}).toArray((err, res) => {
+    if (err) throw err
+    const newArr = res.filter((item, i) => {
+      if (i !== index)
+        return item
+    })
+    db.collection(collection).remove({})
+    db.collection(collection).insert(newArr)
+    callback(newArr)
+  })
+}
+
 module.exports = {
   dropAllCollections,
   insertObjectIntoCollection,
   emptySingleCollection,
   getPageData,
-  editData
+  editData,
+  deleteData
 }
