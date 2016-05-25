@@ -19,7 +19,6 @@ const insertObjectIntoCollection = (db, collection, data, callback) => {
 
 const getPageData = (db, collection, callback) => {
   db.collection(collection).find({}).toArray((err, res) => {
-    if(err) throw err
     callback(res)
   })
 }
