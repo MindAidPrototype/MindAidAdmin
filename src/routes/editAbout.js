@@ -18,13 +18,11 @@ module.exports = (Cookie) => ({
         case 'save':
           editData(db, 'about', index, data, () => {
             reply('worked')
-            db.close()
           })
           break
         case 'delete':
           deleteData(db, 'about', index, (res) => {
             reply('worked')
-            db.close()
           })
           break
         default:

@@ -1,17 +1,17 @@
 /* --- default page --- */
-
-const logout = () => {
-  const xhr = new XMLHttpRequest()
-  xhr.onreadystatechange = () => {
-    if(xhr.readyState === 4 && xhr.status === 200) {
-      window.location.href = '/login'
-    }
-  }
-  xhr.open('post', '/logout')
-  xhr.send()
-}
-
-document.getElementById('logout').addEventListener('click', logout)
+// 
+// const logout = () => {
+//   const xhr = new XMLHttpRequest()
+//   xhr.onreadystatechange = () => {
+//     if(xhr.readyState === 4 && xhr.status === 200) {
+//       window.location.href = '/login'
+//     }
+//   }
+//   xhr.open('post', '/logout')
+//   xhr.send()
+// }
+//
+// document.getElementById('logout').addEventListener('click', logout)
 
 /* --- default page --- */
 
@@ -94,10 +94,14 @@ const addNewSection = () => {
   document.getElementById('newSection').appendChild(buttonsContainer)
 }
 
-if(document.getElementsByClassName('aboutEditButton').length) {
+console.log(document.getElementsByClassName('aboutEditButton'))
+if(document.getElementsByClassName('aboutEditButton').length > 0) {
   const aboutEditButton = Array.from(document.getElementsByClassName('aboutEditButton'))
+  console.log('length');
   aboutEditButton.forEach((el, i) => {
-    el.addEventListener('click', () => { editContent(i) })
+    el.addEventListener('click', () => {
+      console.log('clicked')
+      editContent(i) })
   })
 }
 
@@ -170,7 +174,3 @@ if(document.getElementsByClassName('listenDeleteButton').length){
 }
 
 /* --- listen page --- */
-
-
-
-
