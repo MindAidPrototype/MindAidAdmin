@@ -140,6 +140,13 @@ a {
   text-align: center;
 }
 
+#referContainer {
+  margin: 0 auto;
+  padding-top: 100px;
+  max-width: 640px;
+  width: 94%;
+}
+
 @media screen and (max-width: 500px) {
   #logo {
     height: 15vw;
