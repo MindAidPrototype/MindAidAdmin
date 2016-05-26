@@ -1,22 +1,3 @@
-/* --- default page --- */
-
-const logout = () => {
-  console.log('logging out')
-  const xhr = new XMLHttpRequest()
-  xhr.onreadystatechange = () => {
-    if(xhr.readyState === 4 && xhr.status === 200) {
-      console.log('responsetext: ', xhr.responseText)
-      window.location.href = '/login'
-    }
-  }
-  xhr.open('post', '/logout')
-  xhr.send()
-}
-
-document.getElementById('logout').addEventListener('click', logout)
-
-/* --- default page --- */
-
 /* --- about page --- */
 
 const editContent = (i) => {
@@ -71,7 +52,6 @@ const saveContent = i => {
 }
 
 const cancelContent = () => {
-  console.log('cancelling content')
   location.reload()
 }
 
@@ -100,7 +80,8 @@ const addNewSection = () => {
 if(document.getElementsByClassName('aboutEditButton').length) {
   const aboutEditButton = Array.from(document.getElementsByClassName('aboutEditButton'))
   aboutEditButton.forEach((el, i) => {
-    el.addEventListener('click', () => { editContent(i) })
+    el.addEventListener('click', () => {
+      editContent(i) })
   })
 }
 
@@ -132,7 +113,7 @@ const editQuestion = () => {
   document.getElementsByClassName('listenButtonsContainer')[0].appendChild(cancelButton)
   const question = document.getElementsByClassName('listenQuestions')[0].innerHTML
   document.getElementsByClassName('listenQuestions')[0].innerHTML = ''
-  textArea = document.createElement('textarea')
+  const textArea = document.createElement('textarea')
   textArea.value = question
   document.getElementsByClassName('listenQuestions')[0].appendChild(textArea)
 }
@@ -173,7 +154,3 @@ if(document.getElementsByClassName('listenDeleteButton').length){
 }
 
 /* --- listen page --- */
-
-
-
-

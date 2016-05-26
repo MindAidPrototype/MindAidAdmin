@@ -6,6 +6,8 @@ const login = () => {
   const xhr = new XMLHttpRequest()
   xhr.onreadystatechange = () => {
     if(xhr.readyState === 4 && xhr.status === 200) {
+      parseInt(xhr.responseText) ? window.location.href = '/' :
+      document.getElementById('loginResponse').innerHTML = xhr.responseText
       parseInt(xhr.responseText) ? window.location.href = '/' : failure()
     }
   }
