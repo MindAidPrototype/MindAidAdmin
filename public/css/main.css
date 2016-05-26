@@ -81,6 +81,10 @@ a {
   top: 8vw;
 }
 
+#loginResponse {
+  color: red;
+}
+
 #logout {
   float: right;
   padding: 0.8vw 2vw 0 0;
