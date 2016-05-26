@@ -84,7 +84,7 @@ tape('tests params* route to see if it findes the correct public files', t => {
   server.inject(options1, res => {
     const actual1 = res.statusCode
     const expected1 = 200
-    const actual2 = res.payload.indexOf('console.log') > -1
+    const actual2 = res.payload.indexOf('xhr') > -1
     t.equal(actual1, expected1)
     t.ok(actual2)
   })
