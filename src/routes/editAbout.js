@@ -17,16 +17,18 @@ module.exports = (Cookie) => ({
         switch (request.params.type) {
         case 'save':
           editData(db, 'about', index, data, () => {
-            reply('worked')
+            db.on('close', reply('worked'))
+            db.close()
           })
           break
         case 'delete':
-          deleteData(db, 'about', index, (res) => {
-            reply('worked')
+          deleteData(db, 'about', index, () => {
+            db.on('close', reply('worked'))
+            db.close()
           })
           break
         default:
-          reply('wrong endpoint')
+          db.on('close', reply('wrong endpoint'))
           db.close()
         }
       })
