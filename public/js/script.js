@@ -25,7 +25,7 @@ const deleteContent = (i) => {
   const xhr = new XMLHttpRequest()
   xhr.onreadystatechange = () => {
     if(xhr.readyState === 4 && xhr.status === 200) {
-      location.reload()
+
     }
   }
   xhr.open('post', '/about/delete')
@@ -57,24 +57,26 @@ const cancelContent = () => {
 
 const addNewSection = () => {
   document.getElementById('newSection').innerHTML = ''
-  const input = document.createElement('input')
-  const textArea = document.createElement('textarea')
-  const aboutParagraph = document.createElement('div')
-  aboutParagraph.classList.add('aboutParagraph')
-  aboutParagraph.appendChild(input)
-  aboutParagraph.appendChild(textArea)
-  const editButton = document.createElement('button')
-  editButton.innerHTML = 'save'
-  editButton.addEventListener('click', editContent)
-  const deleteButton = document.createElement('button')
-  deleteButton.innerHTML = 'cancel'
-  deleteButton.addEventListener('click', deleteContent)
-  const buttonsContainer = document.createElement('div')
-  buttonsContainer.classList.add('buttonsContainer')
-  buttonsContainer.appendChild(editButton)
-  buttonsContainer.appendChild(deleteButton)
-  document.getElementById('newSection').appendChild(aboutParagraph)
-  document.getElementById('newSection').appendChild(buttonsContainer)
+  document.getElementsByClassName('tasnim')[0].className = ''
+  document.getElementById('newSection').classList.add('tasnim')
+  // const input = document.createElement('input')
+  // const textArea = document.createElement('textarea')
+  // const aboutParagraph = document.createElement('div')
+  // aboutParagraph.classList.add('aboutParagraph')
+  // aboutParagraph.appendChild(input)
+  // aboutParagraph.appendChild(textArea)
+  // const editButton = document.createElement('button')
+  // editButton.innerHTML = 'save'
+  // editButton.addEventListener('click', editContent)
+  // const deleteButton = document.createElement('button')
+  // deleteButton.innerHTML = 'cancel'
+  // deleteButton.addEventListener('click', deleteContent)
+  // const buttonsContainer = document.createElement('div')
+  // buttonsContainer.classList.add('buttonsContainer')
+  // buttonsContainer.appendChild(editButton)
+  // buttonsContainer.appendChild(deleteButton)
+  // document.getElementById('newSection').appendChild(aboutParagraph)
+  // document.getElementById('newSection').appendChild(buttonsContainer)
 }
 
 if(document.getElementsByClassName('aboutEditButton').length) {
