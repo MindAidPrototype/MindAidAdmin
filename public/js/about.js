@@ -49,30 +49,15 @@ const saveContent = i => {
 }
 
 const cancelContent = () => {
-  console.log('cancelling content')
   location.reload()
 }
 
 const addNewSection = () => {
   document.getElementById('newSection').innerHTML = ''
-  const input = document.createElement('input')
-  const textArea = document.createElement('textarea')
-  const aboutParagraph = document.createElement('div')
-  aboutParagraph.classList.add('aboutParagraph')
-  aboutParagraph.appendChild(input)
-  aboutParagraph.appendChild(textArea)
-  const editButton = document.createElement('button')
-  editButton.innerHTML = 'save'
-  editButton.addEventListener('click', editContent)
-  const deleteButton = document.createElement('button')
-  deleteButton.innerHTML = 'cancel'
-  deleteButton.addEventListener('click', deleteContent)
-  const buttonsContainer = document.createElement('div')
-  buttonsContainer.classList.add('buttonsContainer')
-  buttonsContainer.appendChild(editButton)
-  buttonsContainer.appendChild(deleteButton)
-  document.getElementById('newSection').appendChild(aboutParagraph)
-  document.getElementById('newSection').appendChild(buttonsContainer)
+  document.getElementsByClassName('hider')[0].className = ''
+  document.getElementById('newSection').classList.add('hider')
+  document.getElementById('saveNewSection').addEventListener('click', () => {saveContent('new')})
+  document.getElementById('cancelNewSection').addEventListener('click', cancelContent)
 }
 
 if(document.getElementsByClassName('aboutEditButton').length) {
