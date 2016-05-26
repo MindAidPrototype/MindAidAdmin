@@ -24,6 +24,11 @@ const getPageData = (db, collection, callback) => {
 }
 
 const editData = (db, collection, index, object, callback) => {
+  if (index === 'new') {
+    db.collection(collection).insert(object, (err, res) => {
+      callback(res)
+    })
+  }
   db.collection(collection).find({}).toArray((err, res) => {
     if (err) throw err
     res[index] = object
