@@ -115,10 +115,20 @@ tape('test about/{params*} endpoint', t => {
   }
   const data = {
     oldData: {'colour': 'blue', 'length': 2},
+    updatedData: {'colour': 'pink', 'length': 3},
     newData: {'colour': 'pink', 'length': 3}
   }
 
-  server.inject(createOptions('save', data), res => {
+  server.inject(createOptions('save', {oldData: data.oldData, newData: data.updatedData}), res => {
+    const actualStatusCode = res.statusCode
+    const expectedStatusCode = 200
+    const actualPayload = res.payload
+    const expectedPayload = 'worked'
+    t.equal(actualStatusCode, expectedStatusCode, 'correct status code')
+    t.equal(actualPayload, expectedPayload, 'contains the about string')
+  })
+
+  server.inject(createOptions('delete', {oldData: data.updatedData}), res => {
     const actualStatusCode = res.statusCode
     const expectedStatusCode = 200
     const actualPayload = res.payload
@@ -128,7 +138,7 @@ tape('test about/{params*} endpoint', t => {
     t.equal(actualPayload, expectedPayload, 'contains the about string')
   })
 
-  server.inject(createOptions('delete', data.oldData), res => {
+  server.inject(createOptions('savenew', {newData: data.newData}), res => {
     const actualStatusCode = res.statusCode
     const expectedStatusCode = 200
     const actualPayload = res.payload
