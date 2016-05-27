@@ -1,6 +1,7 @@
 const MongoClient = require('mongodb').MongoClient
 const editData = require('../dbHelpers.js').editData
 const deleteData = require('../dbHelpers.js').deleteData
+const insertObjectIntoCollection = require('../dbHelpers.js').insertObjectIntoCollection
 
 const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/mindaid'
 
@@ -17,6 +18,12 @@ module.exports = (Cookie) => ({
         switch (request.params.type) {
         case 'save':
           editData(db, 'about', oldData, newData, () => {
+            db.on('close', reply('worked'))
+            db.close()
+          })
+          break
+        case 'savenew':
+          insertObjectIntoCollection(db, 'about', newData, () => {
             db.on('close', reply('worked'))
             db.close()
           })
