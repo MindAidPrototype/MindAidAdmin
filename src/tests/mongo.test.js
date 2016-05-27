@@ -64,14 +64,28 @@ tape('checks if a collection has new inserted data in it', t => {
 tape('test that data can be updated', t => {
   const oldData = {'food': 'chocolate', 'drink': 'h2o'}
   const newData = {'food': 'cake', 'drink': 'orange'}
-  const expected = 1
   let actual
   MongoClient.connect(url, (err, db) => {
     db.collection('learn').insert(oldData, (error) => {
       if (error) throw error
       dbHelpers.editData(db, 'learn', oldData, newData, (res) => {
         actual = res.result.nModified
-        t.equal(expected, actual)
+        t.ok(actual === 1, 'data updated')
+        t.end()
+        db.close()
+      })
+    })
+  })
+})
+
+tape('test that data can be deleted', t => {
+  let actual
+  MongoClient.connect(url, (err, db) => {
+    db.collection('about').insert(data, error => {
+      if (error) throw error
+      dbHelpers.deleteData(db, 'about', data, res => {
+        actual = res.deletedCount
+        t.ok(actual === 1, 'data deleted')
         t.end()
         db.close()
       })
