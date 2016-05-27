@@ -52,7 +52,6 @@ const editContent = (i, path) => { //eslint-disable-line
   saveButton.innerHTML = 'save'
   saveButton.addEventListener('click', () => { saveContent(oldData, path) }) //eslint-disable-line
   document.getElementsByClassName('buttonsContainer')[i].appendChild(saveButton)
-  console.log(oldData)
   const cancelButton = document.createElement('button')
   cancelButton.innerHTML = 'cancel'
   cancelButton.addEventListener('click', cancelContent) //eslint-disable-line
