@@ -103,18 +103,32 @@ tape('tests params* route to see if it findes the correct public files', t => {
 })
 
 tape('test about/{params*} endpoint', t => {
-  const options = {
-    method: 'post',
-    url: '/about/save',
-    headers: {
-      cookie: 'cookie=' + encoded
-    },
-    payload: JSON.stringify(JSON.stringify({
-      oldData: {'colour': 'blue', 'length': 2},
-      newData: {'colour': 'pink', 'length': 3}
-    }))
+  const createOptions = (param, data) => {
+    return {
+      method: 'post',
+      url: '/about/' + param,
+      headers: {
+        cookie: 'cookie=' + encoded
+      },
+      payload: JSON.stringify(JSON.stringify(data))
+    }
   }
-  server.inject(options, res => {
+  const data = {
+    oldData: {'colour': 'blue', 'length': 2},
+    newData: {'colour': 'pink', 'length': 3}
+  }
+
+  server.inject(createOptions('save', data), res => {
+    const actualStatusCode = res.statusCode
+    const expectedStatusCode = 200
+    const actualPayload = res.payload
+    const expectedPayload = 'worked'
+
+    t.equal(actualStatusCode, expectedStatusCode, 'correct status code')
+    t.equal(actualPayload, expectedPayload, 'contains the about string')
+  })
+
+  server.inject(createOptions('delete', data.oldData), res => {
     const actualStatusCode = res.statusCode
     const expectedStatusCode = 200
     const actualPayload = res.payload

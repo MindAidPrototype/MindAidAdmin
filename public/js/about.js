@@ -19,7 +19,12 @@ if(document.getElementsByClassName('aboutEditButton').length) {
 if(document.getElementsByClassName('aboutDeleteButton').length) {
   const aboutDeleteButton = Array.from(document.getElementsByClassName('aboutDeleteButton'))
   aboutDeleteButton.forEach((el, i) => {
-    el.addEventListener('click', () => { deleteContent(i, '/about/delete') }) //eslint-disable-line
+    el.addEventListener('click', () => {
+      const oldData = {
+        subtitle: document.getElementsByClassName('aboutParagraph')[i].children[0].innerHTML,
+        paragraph: document.getElementsByClassName('aboutParagraph')[i].children[1].innerHTML
+      }
+      deleteContent(oldData, '/about/delete') }) //eslint-disable-line
   })
 }
 

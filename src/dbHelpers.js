@@ -30,16 +30,10 @@ const editData = (db, collection, oldObject, newObject, callback) => {
   })
 }
 
-const deleteData = (db, collection, index, callback) => {
-  db.collection(collection).find({}).toArray((err, res) => {
+const deleteData = (db, collection, oldObject, callback) => {
+  db.collection(collection).deleteOne(oldObject, (err, res) => {
     if (err) throw err
-    const newArr = res.filter((item, i) => {
-      if (i !== index)
-        return item
-    })
-    db.collection(collection).remove({})
-    db.collection(collection).insert(newArr)
-    callback(newArr)
+    callback(res)
   })
 }
 
