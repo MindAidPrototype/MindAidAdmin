@@ -11,12 +11,14 @@ module.exports = (Cookie) => ({
     if (request.state.cookie === Cookie) {
       MongoClient.connect(url, (err, db) => {
         if (err) throw err
+        const oldData = JSON.parse(request.payload).oldData
+        const newData = JSON.parse(request.payload).newData
         const index = JSON.parse(request.payload).index
-        const data = JSON.parse(request.payload).data
+        //const data = JSON.parse(request.payload).data
 
         switch (request.params.type) {
         case 'save':
-          editData(db, 'about', index, data, () => {
+          editData(db, 'about', oldData, newData, () => {
             db.on('close', reply('worked'))
             db.close()
           })
