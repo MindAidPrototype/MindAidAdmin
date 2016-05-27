@@ -1,16 +1,3 @@
-const deleteContent = (oldData, path) => { //eslint-disable-line
-  const xhr = new XMLHttpRequest()
-  xhr.onreadystatechange = () => {
-    if(xhr.readyState === 4 && xhr.status === 200) {
-      location.reload()
-    }
-  }
-  xhr.open('post', path)
-  xhr.send(JSON.stringify({
-    oldData
-  }))
-}
-
 const updatePageContent = (pagePath, newData, oldData) => { //eslint-disable-line
   const xhr = new XMLHttpRequest()
   xhr.onreadystatechange = () => {
