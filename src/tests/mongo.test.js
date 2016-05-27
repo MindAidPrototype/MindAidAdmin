@@ -60,3 +60,21 @@ tape('checks if a collection has new inserted data in it', t => {
     })
   })
 })
+
+tape('test that data can be updated', t => {
+  const oldData = {'food': 'chocolate', 'drink': 'h2o'}
+  const newData = {'food': 'cake', 'drink': 'orange'}
+  const expected = 1
+  let actual
+  MongoClient.connect(url, (err, db) => {
+    db.collection('learn').insert(oldData, (error) => {
+      if (error) throw error
+      dbHelpers.editData(db, 'learn', oldData, newData, (res) => {
+        actual = res.result.nModified
+        t.equal(expected, actual)
+        t.end()
+        db.close()
+      })
+    })
+  })
+})

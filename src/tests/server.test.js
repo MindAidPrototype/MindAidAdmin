@@ -110,10 +110,8 @@ tape('test about/{params*} endpoint', t => {
       cookie: 'cookie=' + encoded
     },
     payload: JSON.stringify(JSON.stringify({
-      index: 0,
-      data: [{
-        key: 'value'
-      }]
+      oldData: {'colour': 'blue', 'length': 2},
+      newData: {'colour': 'pink', 'length': 3}
     }))
   }
   server.inject(options, res => {

@@ -1,3 +1,4 @@
+
 const addNewSection = () => {
   document.getElementById('newSection').innerHTML = ''
   document.getElementsByClassName('hider')[0].className = ''
@@ -9,7 +10,9 @@ const addNewSection = () => {
 if(document.getElementsByClassName('aboutEditButton').length) {
   const aboutEditButton = Array.from(document.getElementsByClassName('aboutEditButton'))
   aboutEditButton.forEach((el, i) => {
-    el.addEventListener('click', () => { editContent(i, '/about/save') }) //eslint-disable-line
+    el.addEventListener('click', () => {
+      editContent(i, '/about/save') //eslint-disable-line
+    })
   })
 }
 
