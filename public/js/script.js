@@ -1,4 +1,4 @@
-const deleteContent = (i, path) => { //eslint-disable-line
+const deleteContent = (oldData, path) => { //eslint-disable-line
   const xhr = new XMLHttpRequest()
   xhr.onreadystatechange = () => {
     if(xhr.readyState === 4 && xhr.status === 200) {
@@ -7,7 +7,7 @@ const deleteContent = (i, path) => { //eslint-disable-line
   }
   xhr.open('post', path)
   xhr.send(JSON.stringify({
-    index: i
+    oldData
   }))
 }
 
