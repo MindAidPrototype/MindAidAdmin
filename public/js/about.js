@@ -11,7 +11,6 @@ if(document.getElementsByClassName('aboutEditButton').length) {
   const aboutEditButton = Array.from(document.getElementsByClassName('aboutEditButton'))
   aboutEditButton.forEach((el, i) => {
     el.addEventListener('click', () => {
-      console.log(document.getElementsByClassName('aboutParagraph')[i])
       editContent(i, '/about/save') //eslint-disable-line
     })
   })
