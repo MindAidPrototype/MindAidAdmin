@@ -2,9 +2,11 @@
   <div id="aboutContainer">
     <h1>About Page</h1>
     {{#each about}}
-    <div class="aboutParagraph">
+    <div class="aboutSection">
       <h4>{{this.subtitle}}</h4>
-      <p>{{this.paragraph}}</p>
+        {{#each this.paragraph}}
+        <p>{{this}}</p>
+        {{/each}}
     </div>
     <div class="buttonsContainer">
       <button class="aboutEditButton">edit</button>
