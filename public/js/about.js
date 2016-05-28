@@ -1,6 +1,5 @@
 
 const addNewSection = () => {
-  document.getElementById('newSection').innerHTML = ''
   document.getElementsByClassName('hider')[0].className = ''
   document.getElementById('newSection').classList.add('hider')
   document.getElementById('saveNewSection').addEventListener('click', () => {
