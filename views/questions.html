@@ -1,5 +1,6 @@
 <h1>the questions</h1>
 {{#each objs}}
-  <p>{{this.q}}</p>
-  <p>{{this.text}}</p>
+  {{#each this.questions}}
+  <p>{{this}}</p>
+  {{/each}}
 {{/each}}
