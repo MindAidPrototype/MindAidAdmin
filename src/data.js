@@ -28,27 +28,27 @@ module.exports = {
   about: [
     {
       subtitle: 'What',
-      paragraph: 'Mind aid is a resource for teachers to...'
+      paragraph: ['Mind aid is a resource for teachers to...', 'Paragraph 2']
     },
     {
       subtitle: 'What2',
-      paragraph: 'Mind aid is a resource for teachers to...2'
+      paragraph: ['Mind aid is a resource for teachers to...2']
     },
     {
       subtitle: 'What3',
-      paragraph: 'Mind aid is a resource for teachers to...'
+      paragraph: ['Mind aid is a resource for teachers to...']
     },
     {
       subtitle: 'What4',
-      paragraph: 'Mind aid is a resource for teachers to...2'
+      paragraph: ['Mind aid is a resource for teachers to...2']
     },
     {
       subtitle: 'Wha5',
-      paragraph: 'Mind aid is a resource for teachers to...'
+      paragraph: ['Mind aid is a resource for teachers to...']
     },
     {
       subtitle: 'What6',
-      paragraph: 'Mind aid is a resource for teachers to...2'
+      paragraph: ['Mind aid is a resource for teachers to...2']
     }
   ],
   listen: [

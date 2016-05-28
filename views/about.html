@@ -2,9 +2,11 @@
   <div id="aboutContainer">
     <h1>About Page</h1>
     {{#each about}}
-    <div class="aboutParagraph">
+    <div class="aboutSection">
       <h4>{{this.subtitle}}</h4>
-      <p>{{this.paragraph}}</p>
+          {{#each this.paragraph}}
+          <p>{{this}}</p>
+          {{/each}}
     </div>
     <div class="buttonsContainer">
       <button class="aboutEditButton">edit</button>
@@ -14,8 +16,11 @@
   </div>
   <button id="newSection" class="newSectionButton">New Section</button>
   <div id='newInput' class='hider'>
-    <input placeholder="title">
-    <textarea placeholder="what mind aid is about" rows="8" cols="40"></textarea>
+    <div class="aboutSection">
+      <input placeholder="title" />
+      <input placeholder="what mind aid is about" />
+    </div>
+    <button id='addParagraphButton'>Add another paragraph</button>
     <button id='saveNewSection' class="saveButton">save</button>
     <button id='cancelNewSection' class="cancelButton">cancel</button>
   </div>
