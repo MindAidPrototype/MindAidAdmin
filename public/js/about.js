@@ -7,9 +7,10 @@ const addNewSection = () => {
     addNewParagraph(indexOfNewSection)
   })
   document.getElementById('saveNewSection').addEventListener('click', () => {
+    const inputFields = Array.from(aboutSections[indexOfNewSection].children)
     const newData = {
-      subtitle: document.getElementsByTagName('input')[0].value,
-      paragraph: Array.from(aboutSections[indexOfNewSection].children).filter((inputObj,j) => j>0).map(inputObj => inputObj.value)
+      subtitle: inputFields[0].value,
+      paragraph: inputFields.map(inputObj => inputObj.value).slice(1)
     }
     updatePageContent('/about/', newData) //eslint-disable-line
   })
@@ -22,11 +23,11 @@ const addNewParagraph = (i) => {
 }
 
 const createEditAboutSection = (i) => {
-  const aboutSection = document.getElementsByClassName('aboutSection')
+  const aboutSections = document.getElementsByClassName('aboutSection')
   // save data before changes are made
-  const paragraphs = Array.from(aboutSection[i].getElementsByTagName('p'))
+  const paragraphs = Array.from(aboutSections[i].getElementsByTagName('p'))
   const oldData = {
-    subtitle: aboutSection[i].children[0].innerHTML,
+    subtitle: aboutSections[i].children[0].innerHTML,
     paragraph: paragraphs.map(para => para.innerHTML )
   }
   const newParagraphButton = document.createElement('button')
@@ -36,26 +37,26 @@ const createEditAboutSection = (i) => {
   // func defined in script.js
   createSaveAndCancelButtons(i) //eslint-disable-line
 
-  aboutSection[i].innerHTML = ''
+  aboutSections[i].innerHTML = ''
   const subtitleInput = document.createElement('input')
   subtitleInput.value = oldData.subtitle
-  aboutSection[i].appendChild(subtitleInput)
+  aboutSections[i].appendChild(subtitleInput)
   //create specific input fields and populate with current paragraphs
   let paragraphInput
   oldData.paragraph.forEach(oldPara => {
     paragraphInput = document.createElement('input')
     paragraphInput.value = oldPara
-    aboutSection[i].appendChild(paragraphInput)
+    aboutSections[i].appendChild(paragraphInput)
   })
 
   //add event listener to save button
   const saveButton = document.getElementsByClassName('buttonsContainer')[i].children[3]
   saveButton.addEventListener('click', () => {
     //array of input field objects
-    const input = Array.from(aboutSection[i].children)
+    const inputFields = Array.from(aboutSections[i].children)
     const newData = {
-      subtitle: input[0].value,
-      paragraph: input.filter((inputObj,j) => j>0).map(inputObj => inputObj.value)
+      subtitle: inputFields[0].value,
+      paragraph: inputFields.map(inputObj => inputObj.value).slice(1)
     }
   updatePageContent('/about/', newData, oldData) //eslint-disable-line
   })
