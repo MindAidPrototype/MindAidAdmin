@@ -149,3 +149,50 @@ tape('test about/{params*} endpoint', t => {
     t.end()
   })
 })
+
+tape('test learn/{params*} endpoint', t => {
+  const createOptions = (param, data) => {
+    return {
+      method: 'post',
+      url: '/learn/' + param,
+      headers: {
+        cookie: 'cookie=' + encoded
+      },
+      payload: JSON.stringify(JSON.stringify(data))
+    }
+  }
+  const data = {
+    oldData: {'name': 'pumpkin', 'colour': ['orange']},
+    updatedData: {'name': 'apple', 'colour': ['red','green']},
+    newData: {'name': 'banana', colour: ['green']}
+  }
+
+  server.inject(createOptions('save', {oldData: data.oldData, newData: data.updatedData}), res => {
+    const actualStatusCode = res.statusCode
+    const expectedStatusCode = 200
+    const actualPayload = res.payload
+    const expectedPayload = 'worked'
+    t.equal(actualStatusCode, expectedStatusCode, 'correct status code')
+    t.equal(actualPayload, expectedPayload, 'reply is as expected')
+  })
+
+  server.inject(createOptions('delete', {oldData: data.oldData}), res => {
+    const actualStatusCode = res.statusCode
+    const expectedStatusCode = 200
+    const actualPayload = res.payload
+    const expectedPayload = 'worked'
+    t.equal(actualStatusCode, expectedStatusCode, 'correct status code')
+    t.equal(actualPayload, expectedPayload, 'reply is as expected')
+  })
+
+  server.inject(createOptions('savenew', {newData: data.newData}), res => {
+    const actualStatusCode = res.statusCode
+    const expectedStatusCode = 200
+    const actualPayload = res.payload
+    const expectedPayload = 'worked'
+
+    t.equal(actualStatusCode, expectedStatusCode, 'correct status code')
+    t.equal(actualPayload, expectedPayload, 'reply is as expected')
+    t.end()
+  })
+})

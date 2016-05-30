@@ -39,3 +39,8 @@ const createSaveAndCancelButtons = (i) => { //eslint-disable-line
   cancelButton.addEventListener('click', cancelContent) //eslint-disable-line
   document.getElementsByClassName('buttonsContainer')[i].appendChild(cancelButton)
 }
+
+const addNewParagraph = (classname, i) => { //eslint-disable-line
+  const newInput = document.createElement('input')
+  document.getElementsByClassName(classname)[i].appendChild(newInput)
+}
