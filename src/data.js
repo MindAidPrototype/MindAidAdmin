@@ -71,10 +71,12 @@ module.exports = {
   learn: [
     {
       category: 'The Aggressive/Difficult Child',
-      'things_to_know': []
+      subtitle: '10 things about anxiety to help you help your students',
+      'things_to_know': ['a b c d e f', 'g h i']
     },
     {
       category: 'The Sad And Isolated Child',
+      subtitle: 'Things about sad and isolated children',
       'things_to_know': [
         'Young people get sad, tearful, and lonely. This is entirely normal, and to be expected.',
         'fbjkebvrejkberjgkrelb gjerk'

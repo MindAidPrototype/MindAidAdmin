@@ -2,7 +2,8 @@
 
 {{#each learn}}
   <div class="learnSection">
-    <h4>{{this.category}}</h4>
+    <h2>{{this.category}}</h2>
+    <h3>{{this.subtitle}}</h3>
     {{#each this.things_to_know}}
       <p>{{this}}</p>
     {{/each}}
@@ -17,6 +18,7 @@
 <div id='newInput' class='hider'>
   <div class="learnSection">
     <input placeholder="category" />
+    <input placeholder="subtitle">
     <input placeholder="thing to know" />
   </div>
   <button id='addParagraphButton'>Add another thing</button>
