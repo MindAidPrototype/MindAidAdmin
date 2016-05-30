@@ -32,7 +32,7 @@ module.exports = {
     },
     {
       subtitle: 'What2',
-      paragraph: ['Mind aid is a resource for teachers to...2']
+      paragraph: ['Mind aid is a resource for teachers to...2', 'yo yo homie yo']
     },
     {
       subtitle: 'What3',
@@ -40,7 +40,7 @@ module.exports = {
     },
     {
       subtitle: 'What4',
-      paragraph: ['Mind aid is a resource for teachers to...2']
+      paragraph: ['Mind aid is a resource for teachers to...2', 'next paragraph']
     },
     {
       subtitle: 'Wha5',
