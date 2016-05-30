@@ -75,10 +75,10 @@ if(document.getElementsByClassName('aboutDeleteButton').length) {
   const aboutDeleteButton = Array.from(document.getElementsByClassName('aboutDeleteButton'))
   aboutDeleteButton.forEach((el, i) => {
     el.addEventListener('click', () => {
-      const sectionBeingEdited = document.getElementsByClassName('aboutSection')[i]
+      const sectionBeingDeleted = document.getElementsByClassName('aboutSection')[i]
       const oldData = {
-        subtitle: sectionBeingEdited.children[0].innerHTML,
-        paragraph: Array.from(sectionBeingEdited.children).map(pTag => pTag.innerHTML).slice(1)
+        subtitle: sectionBeingDeleted.children[0].innerHTML,
+        paragraph: Array.from(sectionBeingDeleted.children).map(pTag => pTag.innerHTML).slice(1)
       }
       console.log(oldData)
       updatePageContent('/about/', null, oldData) //eslint-disable-line
