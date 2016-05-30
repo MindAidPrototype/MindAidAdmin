@@ -1,3 +1,22 @@
+const addNewSection = () => {
+  const learnSections = document.getElementsByClassName('learnSection')
+  const indexOfNewSection = Array.from(learnSections).length - 1
+  document.getElementsByClassName('hider')[0].className = ''
+  document.getElementById('newSection').classList.add('hider')
+  document.getElementById('addParagraphButton').addEventListener('click', () => {
+    addNewParagraph('learnSection', indexOfNewSection) //eslint-disable-line
+  })
+  document.getElementById('saveNewSection').addEventListener('click', () => {
+    const inputFields = Array.from(learnSections[indexOfNewSection].children)
+    const newData = {
+      category: inputFields[0].value,
+      things_to_know: inputFields.map(inputObj => inputObj.value).slice(1)
+    }
+    updatePageContent('/learn/', newData) //eslint-disable-line
+  })
+  document.getElementById('cancelNewSection').addEventListener('click', cancelContent) //eslint-disable-line
+}
+
 const createEditSection = (i) => {
   const sectionBeingEdited = document.getElementsByClassName('learnSection')[i]
   // save data before changes are made
@@ -66,4 +85,8 @@ if(document.getElementsByClassName('deleteButton').length) {
       updatePageContent('/learn/', null, oldData) //eslint-disable-line
     })
   })
+}
+
+if(document.getElementById('newSection')) {
+  document.getElementById('newSection').addEventListener('click', addNewSection)
 }

@@ -4,7 +4,7 @@ const addNewSection = () => {
   document.getElementsByClassName('hider')[0].className = ''
   document.getElementById('newSection').classList.add('hider')
   document.getElementById('addParagraphButton').addEventListener('click', () => {
-    addNewParagraph(indexOfNewSection)
+    addNewParagraph('aboutSection', indexOfNewSection) //eslint-disable-line
   })
   document.getElementById('saveNewSection').addEventListener('click', () => {
     const inputFields = Array.from(aboutSections[indexOfNewSection].children)
