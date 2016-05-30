@@ -149,3 +149,29 @@ tape('test about/{params*} endpoint', t => {
     t.end()
   })
 })
+
+tape('test learn/{params*} endpoint', t => {
+  const createOptions = (param, data) => {
+    return {
+      method: 'post',
+      url: '/learn/' + param,
+      headers: {
+        cookie: 'cookie=' + encoded
+      },
+      payload: JSON.stringify(JSON.stringify(data))
+    }
+  }
+  const data = {
+    oldData: {'name': 'pumpkin', 'colour': 'orange'}
+  }
+
+  server.inject(createOptions('delete', {oldData: data.oldData}), res => {
+    const actualStatusCode = res.statusCode
+    const expectedStatusCode = 200
+    const actualPayload = res.payload
+    const expectedPayload = 'worked'
+    t.equal(actualStatusCode, expectedStatusCode, 'correct status code')
+    t.equal(actualPayload, expectedPayload, 'reply is as expected')
+    t.end()
+  })
+})
