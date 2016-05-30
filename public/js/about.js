@@ -17,11 +17,6 @@ const addNewSection = () => {
   document.getElementById('cancelNewSection').addEventListener('click', cancelContent) //eslint-disable-line
 }
 
-const addNewParagraph = (i) => {
-  const newInput = document.createElement('input')
-  document.getElementsByClassName('aboutSection')[i].appendChild(newInput)
-}
-
 const createEditAboutSection = (i) => {
   const sectionBeingEdited = document.getElementsByClassName('aboutSection')[i]
   // save data before changes are made
@@ -32,7 +27,10 @@ const createEditAboutSection = (i) => {
   }
   const newParagraphButton = document.createElement('button')
   newParagraphButton.innerHTML = 'New paragraph'
-  newParagraphButton.addEventListener('click', () => {addNewParagraph(i)})
+  newParagraphButton.addEventListener('click', () => {
+    //func defined in scripts.js
+    addNewParagraph('aboutSection', i) //eslint-disable-line
+  })
   document.getElementsByClassName('buttonsContainer')[i].appendChild(newParagraphButton)
   // func defined in script.js
   createSaveAndCancelButtons(i) //eslint-disable-line
