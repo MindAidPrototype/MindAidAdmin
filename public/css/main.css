@@ -106,14 +106,14 @@ a {
   margin-left: 40%;
 }
 
-.aboutEditButton {
+.editButton {
   background-color: red;
   float: left;
   margin-right: 1em;
 
 }
 
-.aboutDeleteButton {
+.deleteButton {
   background-color: pink;
 }
 

@@ -60,25 +60,24 @@ const createEditAboutSection = (i) => {
   })
 }
 
-if(document.getElementsByClassName('aboutEditButton').length) {
-  const aboutEditButton = Array.from(document.getElementsByClassName('aboutEditButton'))
-  aboutEditButton.forEach((el, i) => {
+if(document.getElementsByClassName('editButton').length) {
+  const editButton = Array.from(document.getElementsByClassName('editButton'))
+  editButton.forEach((el, i) => {
     el.addEventListener('click', () => {
       createEditAboutSection(i) //eslint-disable-line
     })
   })
 }
 
-if(document.getElementsByClassName('aboutDeleteButton').length) {
-  const aboutDeleteButton = Array.from(document.getElementsByClassName('aboutDeleteButton'))
-  aboutDeleteButton.forEach((el, i) => {
+if(document.getElementsByClassName('deleteButton').length) {
+  const deleteButton = Array.from(document.getElementsByClassName('deleteButton'))
+  deleteButton.forEach((el, i) => {
     el.addEventListener('click', () => {
       const sectionBeingDeleted = document.getElementsByClassName('aboutSection')[i]
       const oldData = {
         subtitle: sectionBeingDeleted.children[0].innerHTML,
         paragraph: Array.from(sectionBeingDeleted.children).map(pTag => pTag.innerHTML).slice(1)
       }
-      console.log(oldData)
       updatePageContent('/about/', null, oldData) //eslint-disable-line
     })
   })

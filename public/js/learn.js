@@ -50,14 +50,12 @@ const createEditSection = (i) => {
   //add event listener to save button
   const saveButton = document.getElementsByClassName('buttonsContainer')[i].children[3]
   saveButton.addEventListener('click', () => {
-    console.log('clicked save')
     //array of input field objects
     const inputFields = Array.from(sectionBeingEdited.children)
     const newData = {
       category: inputFields[0].value,
       things_to_know: inputFields.map(inputObj => inputObj.value).slice(1)
     }
-    console.log(newData)
     updatePageContent('/learn/', newData, oldData) //eslint-disable-line
   })
 }
@@ -75,13 +73,11 @@ if(document.getElementsByClassName('deleteButton').length) {
   const deleteButton = Array.from(document.getElementsByClassName('deleteButton'))
   deleteButton.forEach((el, i) => {
     el.addEventListener('click', () => {
-      console.log('clicked')
       const sectionBeingDeleted = document.getElementsByClassName('learnSection')[i]
       const oldData = {
         category: sectionBeingDeleted.children[0].innerHTML,
         things_to_know: Array.from(sectionBeingDeleted.children).map(pTag => pTag.innerHTML).slice(1)
       }
-      console.log(oldData)
       updatePageContent('/learn/', null, oldData) //eslint-disable-line
     })
   })
