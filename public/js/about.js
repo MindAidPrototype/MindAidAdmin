@@ -79,6 +79,7 @@ if(document.getElementsByClassName('aboutDeleteButton').length) {
         subtitle: document.getElementsByClassName('aboutSection')[i].children[0].innerHTML,
         paragraph: document.getElementsByClassName('aboutSection')[i].children[1].innerHTML
       }
+      console.log(oldData)
       updatePageContent('/about/', null, oldData) //eslint-disable-line
     })
   })
