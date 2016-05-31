@@ -43,5 +43,5 @@ module.exports = {
   emptySingleCollection,
   getPageData,
   editData,
-  deleteData
+  deleteData,
 }

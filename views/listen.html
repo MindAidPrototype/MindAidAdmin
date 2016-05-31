@@ -1,24 +1,9 @@
 <h1>hello listen page</h1>
 
-<div class="listenSection">
-  <h2>L</h2>
-  <p>{{listen.listen.letterL}}</p>
-  <h2>I</h2>
-  <p>{{listen.listen.letterI}}</p>
-  <h2>S</h2>
-  <p>{{listen.listen.letterS}}</p>
-  <h2>T</h2>
-  <p>{{listen.listen.letterT}}</p>
-  <h2>E</h2>
-  <p>{{listen.listen.letterE}}</p>
-  <h2>N</h2>
-  <p>{{listen.listen.letterN}}</p>
-</div>
-
 <h2 id='convoStarter'>Conversation Starters</h2>
-{{#each listen.conversation_starters}}
+{{#each conversationStarters}}
   <div class="listenSection">
-    <p>{{this}}</p>
+    <p>{{this.question}}</p>
   </div>
   <div class="buttonsContainer">
     <button class="editButton">Edit</button>
