@@ -1,5 +1,6 @@
-<div id="listenCantainer">
-  <h1>hello listen page</h1>
+<h1>hello listen page</h1>
+
+<div class="listenSection">
   <h2>L</h2>
   <p>{{listen.listen.letterL}}</p>
   <h2>I</h2>
@@ -12,15 +13,26 @@
   <p>{{listen.listen.letterE}}</p>
   <h2>N</h2>
   <p>{{listen.listen.letterN}}</p>
-
-  {{#each listen.conversation_starters}}
-    <p class="listenQuestions">{{this}}</p>
-    <div class="listenButtonsContainer">
-      <button class="listenEditButton">Edit</button>
-      <button class="listenDeleteButton">Delete</button>
-    </div>
-  {{/each}}
-
 </div>
 
+<h2 id='convoStarter'>Conversation Starters</h2>
+{{#each listen.conversation_starters}}
+  <div class="listenSection">
+    <p>{{this}}</p>
+  </div>
+  <div class="buttonsContainer">
+    <button class="editButton">Edit</button>
+    <button class="deleteButton">Delete</button>
+  </div>
+{{/each}}
 
+<button id="newSection" class="newSectionButton">New Section</button>
+<div id='newInput' class='hider'>
+  <div class="listenSection">
+    <input placeholder="new convo starter" />
+  </div>
+  <button id='saveNewSection' class="saveButton">save</button>
+  <button id='cancelNewSection' class="cancelButton">cancel</button>
+</div>
+
+<script src="../public/js/listen.js"></script>
