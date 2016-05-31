@@ -44,6 +44,13 @@ const insertObjectIntoArray = (db, collection, identifier, newObject, callback) 
   })
 }
 
+const deleteObjFromArray = (db, collection, identifier, oldObject, callback) => {
+  db.collection(collection).update({identifier}, {$pull: {data: oldObject}}, (err, res) => {
+    if (err) throw err
+    callback(res)
+  })
+}
+
 module.exports = {
   dropAllCollections,
   insertObjectIntoCollection,
@@ -51,5 +58,6 @@ module.exports = {
   getPageData,
   editData,
   deleteData,
-  insertObjectIntoArray
+  insertObjectIntoArray,
+  deleteObjFromArray
 }
