@@ -7,18 +7,6 @@ body {
   margin-left: 1.5vw;
 }
 
-#navbar {
-  position: fixed;
-  width: 100%;
-  background-color: #1266E3;
-  padding: 0.5vw;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
 #homeLink {
   float: right;
   margin: 2vw 2vw 0 0;
@@ -85,10 +73,7 @@ a {
   color: red;
 }
 
-#logout {
-  float: right;
-  padding: 0.8vw 2vw 0 0;
-}
+
 
 #aboutContainer {
   margin: 0 auto;
