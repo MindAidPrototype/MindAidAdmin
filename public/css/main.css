@@ -15,13 +15,13 @@ body {
 }
 
 #footer {
-  background-color: #282828;
-  height: 60px;
-  width: 100%;
-  /*position: absolute;*/
+  position: absolute;
   bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #282828;
   color: white;
-  padding: 1vw 0 0 1vw;
+  padding: 0 0 0 3vw;
 }
 
 #footer p {
