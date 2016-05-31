@@ -2,24 +2,20 @@
   <h1>Refer page</h1>
   <div class="national">
     <h2>National</h2>
-    {{#each refer.national}}
-    <div>
-      <h2>{{this.section}}</h2>
-      <p>Phone: {{this.info.phone}}</p>
-      <p>Website: <a href={{this.info.link}}>{{this.info.link}}</a></p>
-      <p>{{this.info.advice}}</p>
-    </div>
-    <div class="buttonsContainer">
-      <button class="editButton">Edit</button>
-      <button class="deleteButton">Delete</button>
-    </div>
+    {{#each refer}}
+      {{#each this.national}}
+        <div>
+          <p>Section: {{this.section}}</p>
+          <p>Phone: {{this.phone}}</p>
+          <p>Website: <a href={{this.link}}>{{this.link}}</a></p>
+          <p>{{this.advice}}</p>
+        </div>
+      {{/each}}
     {{/each}}
-  </div>
-  <div class="in_school">
+
     <h2>In School</h2>
-    {{#each refer.in_school}}
-    <div>
-      {{#each this.info}}
+    {{#each refer}}
+      {{#each this.inSchool}}
         <div>
           <h3>Name: {{this.name}} </h3>
           <p>Postion: {{this.position}}</p>
@@ -28,37 +24,38 @@
           <p>Phone: {{this.phone}} </p>
         </div>
       {{/each}}
-    </div>
     {{/each}}
-  </div>
-  <div class="in_community">
-    <h2>People In Community</h2>
-    {{#each refer.in_community}}
-    <div>
-      <h3>Name: {{this.name}} </h3>
-      <p>Postion: {{this.position}}</p>
-      <p>Description: {{this.description}}</p>
-      <p>Email: {{this.email}}</p>
-      <p>Phone: {{this.phone}} </p>
-      {{#each this.links}}
-        <p>Site name {{this.name}}</p>
-        <p>link {{this.link}}</p>
+
+    <h2>In Community</h2>
+    {{#each refer}}
+      {{#each this.inCommunity}}
+        <div>
+          <h3>Name: {{this.name}} </h3>
+          <p>Postion: {{this.position}}</p>
+          <p>Description: {{this.description}}</p>
+          <p>Email: {{this.email}}</p>
+          <p>Phone: {{this.phone}} </p>
+          {{#each this.links}}
+            <p>Name: {{this.name}}</p>
+            <p>Link: {{this.link}}</p>
+          {{/each}}
+        </div>
       {{/each}}
-    </div>
     {{/each}}
-  </div>
-  <div class="self_referral">
-    <h2>Services In Community</h2>
-    {{#each refer.self_referral}}
-    <div>
-      <h3>Name: {{this.service_name}} </h3>
-      <p>Description: {{this.description}}</p>
-      <p>Email: {{this.email}}</p>
-      {{#each this.links}}
-        <p>Site name {{this.name}}</p>
-        <p>link {{this.link}}</p>
+
+    <h2>Self Referral</h2>
+    {{#each refer}}
+      {{#each this.selfReferral}}
+        <div>
+          <h3>Service Name: {{this.serviceName}} </h3>
+          <p>Description: {{this.description}}</p>
+          <p>Email: {{this.email}}</p>
+          {{#each this.links}}
+            <p>Name: {{this.name}}</p>
+            <p>Link: {{this.link}}</p>
+          {{/each}}
+        </div>
       {{/each}}
-    </div>
     {{/each}}
   </div>
 </div>
