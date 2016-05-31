@@ -51,6 +51,14 @@ const deleteObjFromArray = (db, collection, identifier, oldObject, callback) => 
   })
 }
 
+const editObjInArray = (db, collection, identifier, oldObject, newObject, callback) => {
+  db.collection(collection).update({ identifier, data: oldObject },
+    { $set: { 'data.$': newObject } }, (err, res) => {
+      if (err) throw err
+      callback(res)
+    })
+}
+
 module.exports = {
   dropAllCollections,
   insertObjectIntoCollection,
@@ -59,5 +67,6 @@ module.exports = {
   editData,
   deleteData,
   insertObjectIntoArray,
-  deleteObjFromArray
+  deleteObjFromArray,
+  editObjInArray
 }
