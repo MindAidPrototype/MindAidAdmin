@@ -85,7 +85,7 @@ tape('test that data can be deleted', t => {
   })
 })
 
-tape('test inserting into array', t => {
+tape('test updating data in an array', t => {
   let actual
   MongoClient.connect(url, (err, db) => {
     db.collection('refer').deleteOne({identifier: 'national'})
@@ -99,7 +99,13 @@ tape('test inserting into array', t => {
     dbHelpers.deleteObjFromArray(db, 'refer', data.identifier, {'number': 4}, (res) => {
       actual = res.result.nModified
       t.ok(actual===1, 'data removed from array')
+    })
+
+    dbHelpers.editObjInArray(db, 'refer', data.identifier, {'number': 2}, {'number': 5}, (res) => {
+      actual = res.result.nModified
+      t.ok(actual===1, 'data updated in array')
       t.end()
+      db.close()
     })
   })
 })
