@@ -15,7 +15,7 @@ body {
 }
 
 #footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   height: 60px;
@@ -60,15 +60,11 @@ body {
   margin-top: 12px;
 }
 
-#aboutContainer {
-  margin: 0 auto;
-  padding-top: 100px;
-  max-width: 640px;
-  width: 94%;
-}
-
-#aboutContainer h1 {
-  text-align: center;
+#aboutCo {
+  margin-top: 116px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 116px;
 }
 
 .buttonsContainer {
@@ -76,7 +72,7 @@ body {
   margin-left: 40%;
 }
 
-.editButton {
+/*.editButton {
   background-color: red;
   float: left;
   margin-right: 1em;
@@ -85,12 +81,12 @@ body {
 
 .deleteButton {
   background-color: pink;
-}
+}*/
 
-.newSectionButton {
+/*.newSectionButton {
   background-color: green;
   margin: 3vw auto;
-}
+}*/
 
 .aboutSection {
   border: 1px solid lightgrey;
@@ -127,6 +123,10 @@ body {
   padding-top: 100px;
   max-width: 640px;
   width: 94%;
+}
+
+.saveButton {
+  background-color: pink;
 }
 
 @media screen and (max-width: 500px) {
