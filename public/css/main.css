@@ -28,21 +28,14 @@ body {
   margin: 20px 0;
 }
 
-#homeList li {
-  list-style-type: none;
-  text-align: center;
-  margin: auto;
-  width: 60%;
-  border: 1px solid lightgrey;
-  border-radius: 5%;
-  margin: 1vw;
-  padding: 0.5vw 3vw;
+.list-group {
+  margin-top: 118px;
+  margin-left: 450px;
+  margin-right: 450px;
 }
 
-#homeList {
-  position: absolute;
-  left: 35%;
-  top: 8vw;
+#list-group-item a {
+  align-content: center;
 }
 
 .form-signin {
