@@ -130,6 +130,18 @@ a {
   border-radius: 10px;
 }
 
+.listenSection {
+  border: 1px solid lightgrey;
+  margin: 1vw;
+  padding: 1vw;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#convoStarter {
+  text-align: center;
+}
+
 #listenContainer {
   border: 1px solid #FAFAFA;
   background-color: #FAFAFA;
