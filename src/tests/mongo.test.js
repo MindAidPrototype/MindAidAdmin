@@ -94,6 +94,11 @@ tape('test inserting into array', t => {
     dbHelpers.insertObjectIntoArray(db, 'refer', data.identifier, {'number': 4}, (res) => {
       actual = res.result.nModified
       t.ok(actual===1, 'data inserted into array')
+    })
+
+    dbHelpers.deleteObjFromArray(db, 'refer', data.identifier, {'number': 4}, (res) => {
+      actual = res.result.nModified
+      t.ok(actual===1, 'data removed from array')
       t.end()
     })
   })
