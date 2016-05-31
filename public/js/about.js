@@ -1,8 +1,8 @@
 const addNewSection = () => {
   const aboutSections = document.getElementsByClassName('aboutSection')
   const indexOfNewSection = Array.from(aboutSections).length - 1
-  document.getElementsByClassName('hider')[0].className = ''
-  document.getElementById('newSection').classList.add('hider')
+  document.getElementsByClassName('hide')[0].className = ''
+  document.getElementById('newSection').classList.add('hide')
   document.getElementById('addParagraphButton').addEventListener('click', () => {
     addNewParagraph('aboutSection', indexOfNewSection) //eslint-disable-line
   })

@@ -4,15 +4,15 @@
     <h2>National</h2>
     {{#each refer.national}}
     <div>
-      <h2>
-        {{this.section}}
-      </h2>
-        <p>Phone: {{this.info.phone}}</p>
-        <p>Website: <a href={{this.info.link}}>{{this.info.link}}</a></p>
-        <p>{{this.info.advice}}</p>
+      <h2>{{this.section}}</h2>
+      <p>Phone: {{this.info.phone}}</p>
+      <p>Website: <a href={{this.info.link}}>{{this.info.link}}</a></p>
+      <p>{{this.info.advice}}</p>
     </div>
-    <button id="referNationalEdit">Edit</button>
-    <button id="referNationalDelete">Delete</button>
+    <div class="buttonsContainer">
+      <button class="editButton">Edit</button>
+      <button class="deleteButton">Delete</button>
+    </div>
     {{/each}}
   </div>
   <div class="in_school">

@@ -29,8 +29,8 @@ const cancelContent = () => { //eslint-disable-line
 }
 
 const createSaveAndCancelButtons = (i) => { //eslint-disable-line
-  document.getElementsByClassName('buttonsContainer')[i].children[0].classList.add('hider')
-  document.getElementsByClassName('buttonsContainer')[i].children[1].classList.add('hider')
+  document.getElementsByClassName('buttonsContainer')[i].children[0].classList.add('hide')
+  document.getElementsByClassName('buttonsContainer')[i].children[1].classList.add('hide')
   const saveButton = document.createElement('button')
   saveButton.innerHTML = 'save'
   document.getElementsByClassName('buttonsContainer')[i].appendChild(saveButton)
