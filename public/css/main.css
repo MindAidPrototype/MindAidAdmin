@@ -45,35 +45,27 @@ body {
   top: 8vw;
 }
 
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-signin .form-signin-heading, .form-signin {
+    margin-bottom: 10px;
+}
+
 #loginContainer {
-  border: 1px solid #282828;
-  position: absolute;
-  margin: 20vw 0 0 30vw;
-  padding: 3vw;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-#loginContainer span, button {
-  margin: auto;
-  padding: 1vw;
-  display: block;
+#buttonContainer {
+  margin-top: 12px;
 }
-
-#loginContainer button {
-  margin-top: 1vw;
-}
-
-#loginHeader {
-  position: absolute;
-  width: 20%;
-  left: 3vw;
-  top: 8vw;
-}
-
-#loginResponse {
-  color: red;
-}
-
-
 
 #aboutContainer {
   margin: 0 auto;
