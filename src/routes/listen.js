@@ -10,8 +10,8 @@ module.exports = (Cookie) => ({
     request.state.cookie === Cookie ?
     MongoClient.connect(url, (err, db) => {
       if (err) throw err
-      getPageData(db, 'listen', (res) => {
-        reply.view('listen', {listen: res[0]})
+      getPageData(db, 'conversationStarters', (res) => {
+        reply.view('listen', {conversationStarters: res})
         db.close()
       })
 

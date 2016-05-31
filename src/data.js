@@ -51,22 +51,10 @@ module.exports = {
       paragraph: ['Mind aid is a resource for teachers to...2']
     }
   ],
-  listen: [
-    {
-      listen: {
-        letterL: 'listen non-judgmentally and empathically gather',
-        letterI: 'gather Information, ask open questions, don\'t push',
-        letterS: 'assess people\'s risk of harm, Self-harm or Suicide',
-        letterT: 'tell them useful information about their problem, reassure',
-        letterE: 'encouraging self-help and other support strategies',
-        letterN: 'not alone, follow up and direct to appropriate professional help'
-      },
-      conversation_starters: [
-        'Can you tell me a bit more about what happened?',
-        'How were you feeling at the time?',
-        'How are you feeling about it now?'
-      ]
-    }
+  conversationStarters: [
+    { question: 'Can you tell me a bit more about what happened?' },
+    { question: 'How were you feeling at the time?' },
+    { question: 'How are you feeling about it now?' }
   ],
   learn: [
     {
@@ -139,7 +127,7 @@ module.exports = {
           ]
         }
       ],
-      'self_referral': [
+      self_referral: [
         {
           'service_name': 'Surrey East Young People Walk in Service',
           description: 'Drop in charity provision for mental health',

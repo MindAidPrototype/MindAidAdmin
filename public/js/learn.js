@@ -41,7 +41,6 @@ const createEditSection = (i) => {
   const categoryInput = document.createElement('input')
   categoryInput.value = oldData.category
   sectionBeingEdited.appendChild(categoryInput)
-  console.log(categoryInput.value)
 
   const subtitle = document.createElement('input')
   subtitle.value = oldData.subtitle

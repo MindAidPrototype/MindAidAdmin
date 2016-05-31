@@ -4,40 +4,30 @@ const MongoClient = require('mongodb').MongoClient
 const dbHelpers = require('../dbHelpers.js')
 const tape = require('tape')
 
-const url = 'mongodb://localhost:27017/mindaidtest' || process.env.MONGODB_URI
-
-const data = {key: 'value'}
-
-const getQuestions = (database, callback) => {
-  database.collection('questions').find({}).toArray((rre, ser) => {
-    if(rre) throw rre
-    callback(ser)
-  })
-}
+const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/mindaidtest'
 
 tape('test that data can be added to a collection', t => {
-  const expected = 1
-  let actual
-  const collection = 'about'
   MongoClient.connect(url, (err, db) => {
-    db.collection('questions').remove()
-    dbHelpers.insertObjectIntoCollection(db, collection, data, (res) => {
-      actual = res.insertedCount
-      t.equal(expected, actual, 'data added to collection' + collection)
-      t.end()
-      db.close()
+    const data = {key: 'value'}
+    db.collection('about').remove(() => {
+      dbHelpers.insertObjectIntoCollection(db, 'about', data, (res) => {
+        const actual = res.ops[0].key
+        const expected = 'value'
+        t.equal(actual, expected, 'data added to collection about')
+        t.end()
+        db.close()
+      })
     })
   })
 })
 
 tape('empty a single collection', t => {
-  const collection = 'about'
   MongoClient.connect(url, (err, db) => {
-    dbHelpers.emptySingleCollection(db, collection, () => {
-      getQuestions(db, (response) => {
+    dbHelpers.emptySingleCollection(db, 'about', () => {
+      db.collection('about').find({}).toArray((err2, res) => {
         const expected = []
-        const actual = response
-        t.deepEqual(expected, actual, collection + 'collection emptied')
+        const actual = res
+        t.deepEqual(actual, expected, 'about collection emptied')
         t.end()
         db.close()
       })
@@ -47,12 +37,13 @@ tape('empty a single collection', t => {
 
 tape('checks if a collection has new inserted data in it', t => {
   MongoClient.connect(url, (err, db) => {
+    const data = {key: 'value'}
     db.collection('questions').insert(data, (error) => {
       if(error) throw error
-      getQuestions(db, (response) => {
-        const lastIndex = (response.length - 1)
+      db.collection('questions').find({}).toArray((err2, res) => {
+        const lastIndex = (res.length - 1)
         const expected = 'value'
-        const actual = response[lastIndex].key
+        const actual = res[lastIndex].key
         t.equal(expected, actual)
         t.end()
         db.close()
@@ -81,6 +72,7 @@ tape('test that data can be updated', t => {
 tape('test that data can be deleted', t => {
   let actual
   MongoClient.connect(url, (err, db) => {
+    const data = {key: 'value'}
     db.collection('about').insert(data, error => {
       if (error) throw error
       dbHelpers.deleteData(db, 'about', data, res => {

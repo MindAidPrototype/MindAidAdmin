@@ -7,7 +7,7 @@ const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/mindaid'
 
 module.exports = (Cookie) => ({
   method: 'POST',
-  path: '/listen/{type}',
+  path: '/about/{type}',
   handler: (request, reply) => {
     if (request.state.cookie === Cookie) {
       MongoClient.connect(url, (err, db) => {
@@ -17,19 +17,19 @@ module.exports = (Cookie) => ({
 
         switch (request.params.type) {
         case 'save':
-          editData(db, 'conversationStarters', oldData, newData, () => {
+          editData(db, 'about', oldData, newData, () => {
             db.on('close', reply('worked'))
             db.close()
           })
           break
         case 'savenew':
-          insertObjectIntoCollection(db, 'conversationStarters', newData, () => {
+          insertObjectIntoCollection(db, 'about', newData, () => {
             db.on('close', reply('worked'))
             db.close()
           })
           break
         case 'delete':
-          deleteData(db, 'conversationStarters', oldData, () => {
+          deleteData(db, 'about', oldData, () => {
             db.on('close', reply('worked'))
             db.close()
           })
