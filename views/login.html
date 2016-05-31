@@ -1,7 +1,16 @@
-<h1 id="loginHeader">Login to Mind Aid</h1>
 <div id="loginContainer">
-  <span>username: </span><input id="username">
-  <span>password: </span><input id="password">
-  <div id="loginResponse"></div>
-  <button id="loginButton">submit</button>
+  <form class="form-signin">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <label for="inputUser" class="sr-only">User name</label>
+    <input id="username" type="username" id="inputEmail" class="form-control" placeholder="User name" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input id="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <div id="buttonContainer">
+      <button id="loginButton" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </div>
+  </form>
 </div>
+
+
+
+
