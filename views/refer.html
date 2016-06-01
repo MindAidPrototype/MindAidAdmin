@@ -2,21 +2,24 @@
   <h1>Refer page</h1>
   <div class="national">
     <h2>National</h2>
-    {{#each refer}}
-      {{#each this.national}}
-        <div>
+
+      {{#each refer.national.data}}
+        <div class="national">
           <p>Section: {{this.section}}</p>
           <p>Phone: {{this.phone}}</p>
           <p>Website: <a href={{this.link}}>{{this.link}}</a></p>
           <p>{{this.advice}}</p>
         </div>
+        <div class="buttonsContainer">
+          <button class="editButton">edit</button>
+          <button class="deleteButton">delete</button>
+        </div>
       {{/each}}
-    {{/each}}
+
 
     <h2>In School</h2>
-    {{#each refer}}
-      {{#each this.inSchool}}
-        <div>
+      {{#each refer.school.data}}
+        <div class="school">
           <h3>Name: {{this.name}} </h3>
           <p>Postion: {{this.position}}</p>
           <p>Description: {{this.description}}</p>
@@ -24,12 +27,10 @@
           <p>Phone: {{this.phone}} </p>
         </div>
       {{/each}}
-    {{/each}}
 
     <h2>In Community</h2>
-    {{#each refer}}
-      {{#each this.inCommunity}}
-        <div>
+      {{#each refer.community.data}}
+        <div class="community">
           <h3>Name: {{this.name}} </h3>
           <p>Postion: {{this.position}}</p>
           <p>Description: {{this.description}}</p>
@@ -41,12 +42,11 @@
           {{/each}}
         </div>
       {{/each}}
-    {{/each}}
+
 
     <h2>Self Referral</h2>
-    {{#each refer}}
-      {{#each this.selfReferral}}
-        <div>
+      {{#each refer.selfReferral.data}}
+        <div class="selfReferral">
           <h3>Service Name: {{this.serviceName}} </h3>
           <p>Description: {{this.description}}</p>
           <p>Email: {{this.email}}</p>
@@ -56,6 +56,5 @@
           {{/each}}
         </div>
       {{/each}}
-    {{/each}}
   </div>
 </div>
