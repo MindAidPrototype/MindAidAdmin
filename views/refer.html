@@ -23,8 +23,8 @@
           <p>Website: <input placeholder="website"></p>
           <p><input placeholder="advice"></p>
         </div>
-        <button class="saveButton">save</button>
-        <button class="cancelButton">cancel</button>
+        <button class="saveNewButton">save</button>
+        <button class="cancelNewSection">cancel</button>
       </div>
     </div>
 
@@ -45,33 +45,64 @@
         {{/each}}
         <button class="newSectionButton">New Section</button>
         <div class="newSection hide">
-          <div class="newInput national">
+          <div class="newInput school">
             <p>Name: <input placeholder="section"></p>
             <p>Position: <input placeholder="phone"></p>
             <p>Description: <input placeholder="website"></p>
             <p>Email: <input placeholder="email"></span></p>
             <p>Phone: <input placeholder="phone"></p>
           </div>
-          <button class="saveButton">save</button>
-          <button class="cancelButton">cancel</button>
+          <button class="saveNewButton">save</button>
+          <button class="cancelNewSection">cancel</button>
         </div>
     </div>
 
 
     <h2>In Community</h2>
+    <div>
       {{#each refer.community.data}}
         <section class="community">
-          <p>Name: {{this.name}} </p>
-          <p>Postion: {{this.position}}</p>
-          <p>Description: {{this.description}}</p>
-          <p>Email: {{this.email}}</p>
-          <p>Phone: {{this.phone}} </p>
-          {{#each this.links}}
-            <p>Name: {{this.name}}</p>
-            <p>Link: {{this.link}}</p>
-          {{/each}}
-        </section>
+          <p>Name: <span>{{this.name}}</span></p>
+          <p>Postion: <span>{{this.position}}</span></p>
+          <p>Description: <span>{{this.description}}</span></p>
+          <p>Email: <span>{{this.email}}</span></p>
+          <p>Phone: <span>{{this.phone}}</span></p>
+          <div class="links">
+            {{#each this.links}}
+            <div>
+              <p>Link name: <span>{{this.name}}</span></p>
+              <p>Link: <span>{{this.link}}</span></p>
+            </div>
+            {{/each}}
+          </div>
+
+          </section>
+          <div class="buttonsContainer">
+            <button class="editButton">edit</button>
+            <button class="deleteButton">delete</button>
+          </div>
+
       {{/each}}
+      <div class="newSection hide">
+        <div class="newInput community">
+          <p>Name: <input placeholder="name"></p>
+          <p>Postion: <input placeholder="position"></p>
+          <p>Description: <input placeholder="description"></p>
+          <p>Email: <input placeholder="email"></p>
+          <p>Phone: <input placeholder="phone"></p>
+          <div class="links">
+            <div>
+              <p>Link name: <input placeholder="link name"></p>
+              <p>Link: <input placeholder="link"></p>
+            </div>
+          </div>
+        </div>
+        <button class="newLink">Add another link</button>
+        <button class="saveNewButton">save</button>
+        <button class="cancelNewSection">cancel</button>
+      </div>
+      <button class="newSectionButton">New Section</button>
+    </div>
 
 
     <h2>Self Referral</h2>

@@ -60,7 +60,7 @@ module.exports = {
           section: 'emergency',
           phone: '999',
           link: 'http://dkjflk.com',
-          advice: 'Go to their nearest Accident and Emergency (A&amp;E)'
+          advice: 'Go to their nearest Accident and Emergency (A&E)'
         },
         {
           section: 'nhs',
