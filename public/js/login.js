@@ -1,6 +1,8 @@
 const loginButton = document.getElementById('loginButton')
 
-const login = function () {
+const login = function (e) {
+  e.preventDefault()
+  console.log('logging in')
   const username = document.getElementById('username').value
   const password = document.getElementById('password').value
   const xhr = new XMLHttpRequest()
