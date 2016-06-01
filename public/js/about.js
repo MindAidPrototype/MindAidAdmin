@@ -40,7 +40,7 @@ const createEditAboutSection = function (i) {
   subtitleInput.value = oldData.subtitle
   sectionBeingEdited.appendChild(subtitleInput)
   //create specific input fields and populate with current paragraphs
-  let paragraphInput
+  var paragraphInput
   oldData.paragraph.forEach(function (oldPara) {
     paragraphInput = document.createElement('input')
     paragraphInput.value = oldPara

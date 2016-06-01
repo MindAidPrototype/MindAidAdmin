@@ -55,7 +55,7 @@ tape('checks if a collection has new inserted data in it', t => {
 tape('test that data can be updated', t => {
   const oldData = {'food': 'chocolate', 'drink': 'h2o'}
   const newData = {'food': 'cake', 'drink': 'orange'}
-  let actual
+  var actual
   MongoClient.connect(url, (err, db) => {
     db.collection('learn').insert(oldData, (error) => {
       if (error) throw error
@@ -70,7 +70,7 @@ tape('test that data can be updated', t => {
 })
 
 tape('test that data can be deleted', t => {
-  let actual
+  var actual
   MongoClient.connect(url, (err, db) => {
     const data = {key: 'value'}
     db.collection('about').insert(data, error => {

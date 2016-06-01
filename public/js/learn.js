@@ -46,7 +46,7 @@ const createEditSection = function (i) {
   subtitle.value = oldData.subtitle
   sectionBeingEdited.appendChild(subtitle)
 
-  let paragraphInput
+  var paragraphInput
   oldData.things_to_know.forEach(function (oldPara) {
     paragraphInput = document.createElement('input')
     paragraphInput.value = oldPara
