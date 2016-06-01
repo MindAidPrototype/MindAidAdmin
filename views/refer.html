@@ -1,37 +1,67 @@
 <div id="referContainer">
   <h1>Refer page</h1>
-  <div class="national">
-    <h2>National</h2>
 
+    <h2>National</h2>
+    <div>
       {{#each refer.national.data}}
-        <div class="national">
-          <p>Section: {{this.section}}</p>
-          <p>Phone: {{this.phone}}</p>
-          <p>Website: <a href={{this.link}}>{{this.link}}</a></p>
-          <p>{{this.advice}}</p>
-        </div>
+        <section class="national">
+          <p>Section: <span>{{this.section}}</span></p>
+          <p>Phone: <span>{{this.phone}}</span></p>
+          <p>Website: <span>{{this.link}}</span></p>
+          <p><span>{{this.advice}}</span></p>
+        </section>
         <div class="buttonsContainer">
           <button class="editButton">edit</button>
           <button class="deleteButton">delete</button>
         </div>
       {{/each}}
-
-
-    <h2>In School</h2>
-      {{#each refer.school.data}}
-        <div class="school">
-          <h3>Name: {{this.name}} </h3>
-          <p>Postion: {{this.position}}</p>
-          <p>Description: {{this.description}}</p>
-          <p>Email: {{this.email}}</p>
-          <p>Phone: {{this.phone}} </p>
+      <button class="newSectionButton">New Section</button>
+      <div class="newSection hide">
+        <div class="newInput national">
+          <p>Section: <input placeholder="section"></p>
+          <p>Phone: <input placeholder="phone"></p>
+          <p>Website: <input placeholder="website"></p>
+          <p><input placeholder="advice"></p>
         </div>
-      {{/each}}
+        <button class="saveButton">save</button>
+        <button class="cancelButton">cancel</button>
+      </div>
+    </div>
+
+    <div>
+      <h2>In School</h2>
+        {{#each refer.school.data}}
+          <section class="school">
+            <p>Name: <span>{{this.name}}</span></p>
+            <p>Postion: <span>{{this.position}}</span></p>
+            <p>Description: <span>{{this.description}}</span></p>
+            <p>Email: <span>{{this.email}}</span></p>
+            <p>Phone: <span>{{this.phone}}</span></p>
+          </section>
+          <div class="buttonsContainer">
+            <button class="editButton">edit</button>
+            <button class="deleteButton">delete</button>
+          </div>
+        {{/each}}
+        <button class="newSectionButton">New Section</button>
+        <div class="newSection hide">
+          <div class="newInput national">
+            <p>Name: <input placeholder="section"></p>
+            <p>Position: <input placeholder="phone"></p>
+            <p>Description: <input placeholder="website"></p>
+            <p>Email: <input placeholder="email"></span></p>
+            <p>Phone: <input placeholder="phone"></p>
+          </div>
+          <button class="saveButton">save</button>
+          <button class="cancelButton">cancel</button>
+        </div>
+    </div>
+
 
     <h2>In Community</h2>
       {{#each refer.community.data}}
-        <div class="community">
-          <h3>Name: {{this.name}} </h3>
+        <section class="community">
+          <p>Name: {{this.name}} </p>
           <p>Postion: {{this.position}}</p>
           <p>Description: {{this.description}}</p>
           <p>Email: {{this.email}}</p>
@@ -40,21 +70,23 @@
             <p>Name: {{this.name}}</p>
             <p>Link: {{this.link}}</p>
           {{/each}}
-        </div>
+        </section>
       {{/each}}
 
 
     <h2>Self Referral</h2>
       {{#each refer.selfReferral.data}}
-        <div class="selfReferral">
-          <h3>Service Name: {{this.serviceName}} </h3>
+        <section class="selfReferral">
+          <p>Service Name: {{this.serviceName}} </p>
           <p>Description: {{this.description}}</p>
           <p>Email: {{this.email}}</p>
           {{#each this.links}}
             <p>Name: {{this.name}}</p>
             <p>Link: {{this.link}}</p>
           {{/each}}
-        </div>
+        </section>
       {{/each}}
   </div>
 </div>
+
+<script src="../public/js/refer.js"></script>

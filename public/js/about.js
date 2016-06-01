@@ -23,7 +23,7 @@ const createEditAboutSection = (i) => {
   const paragraphs = Array.from(sectionBeingEdited.getElementsByTagName('p'))
   const oldData = {
     subtitle: sectionBeingEdited.children[0].innerHTML,
-    paragraph: paragraphs.map(para => para.innerHTML )
+    paragraph: paragraphs.map(para => para.innerHTML)
   }
   const newParagraphButton = document.createElement('button')
   newParagraphButton.innerHTML = 'New paragraph'

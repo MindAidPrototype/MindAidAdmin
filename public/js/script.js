@@ -24,6 +24,40 @@ const updatePageContent = (pagePath, newData, oldData) => { //eslint-disable-lin
   }
 }
 
+const updateArray = (pagePath, identifier, newData, oldData) => { //eslint-disable-line
+  const xhr = new XMLHttpRequest()
+  xhr.onreadystatechange = () => {
+    if(xhr.readyState === 4 && xhr.status === 200) {
+      location.reload()
+    }
+  }
+  if (oldData && newData) {
+    xhr.open('post', pagePath + 'save')
+    xhr.send(JSON.stringify({
+      identifier,
+      oldData,
+      newData
+    }))
+    console.log(JSON.stringify({
+      identifier,
+      oldData,
+      newData
+    }))
+  } else if (oldData) {
+    xhr.open('post', pagePath + 'delete')
+    xhr.send(JSON.stringify({
+      identifier,
+      oldData
+    }))
+  } else {
+    xhr.open('post', pagePath + 'savenew')
+    xhr.send(JSON.stringify({
+      identifier,
+      newData
+    }))
+  }
+}
+
 const cancelContent = () => { //eslint-disable-line
   location.reload()
 }

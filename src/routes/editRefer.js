@@ -18,7 +18,9 @@ module.exports = (Cookie) => ({
 
         switch (request.params.type) {
         case 'save':
-          editObjInArray(db, 'refer', identifier, oldData, newData, () => {
+          editObjInArray(db, 'refer', identifier, oldData, newData, (res) => {
+            console.log(identifier, oldData, newData);
+            console.log(res)
             db.on('close', reply('worked'))
             db.close()
           })
@@ -30,7 +32,10 @@ module.exports = (Cookie) => ({
           })
           break
         case 'delete':
-          deleteObjFromArray(db, 'refer', identifier, oldData, () => {
+          deleteObjFromArray(db, 'refer', identifier, oldData, (res) => {
+            console.log(identifier)
+            console.log(oldData)
+            console.log(res)
             db.on('close', reply('worked'))
             db.close()
           })
