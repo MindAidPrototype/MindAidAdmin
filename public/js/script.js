@@ -1,6 +1,6 @@
-const updatePageContent = (pagePath, newData, oldData) => { //eslint-disable-line
+const updatePageContent = function (pagePath, newData, oldData) { //eslint-disable-line
   const xhr = new XMLHttpRequest()
-  xhr.onreadystatechange = () => {
+  xhr.onreadystatechange = function () {
     if(xhr.readyState === 4 && xhr.status === 200) {
       location.reload()
     }
@@ -24,15 +24,15 @@ const updatePageContent = (pagePath, newData, oldData) => { //eslint-disable-lin
   }
 }
 
-const cancelContent = () => { //eslint-disable-line
+const cancelContent = function () { //eslint-disable-line
   location.reload()
 }
 
-const createSaveAndCancelButtons = (i) => { //eslint-disable-line
+const createSaveAndCancelButtons = function (i) { //eslint-disable-line
   document.getElementsByClassName('buttonsContainer')[i].children[0].classList.add('hide')
   document.getElementsByClassName('buttonsContainer')[i].children[1].classList.add('hide')
   const saveButton = document.createElement('button')
-  saveButton.classList.add("saveButton")
+  saveButton.classList.add('saveButton')
   saveButton.innerHTML = 'save'
   document.getElementsByClassName('buttonsContainer')[i].appendChild(saveButton)
   const cancelButton = document.createElement('button')
@@ -41,7 +41,7 @@ const createSaveAndCancelButtons = (i) => { //eslint-disable-line
   document.getElementsByClassName('buttonsContainer')[i].appendChild(cancelButton)
 }
 
-const addNewParagraph = (classname, i) => { //eslint-disable-line
+const addNewParagraph = function (classname, i) { //eslint-disable-line
   const newInput = document.createElement('input')
   document.getElementsByClassName(classname)[i].appendChild(newInput)
 }
