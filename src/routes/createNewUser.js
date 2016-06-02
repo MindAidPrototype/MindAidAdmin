@@ -4,7 +4,6 @@ module.exports = (Cookie, newUserSecret) => ({
   method: 'post',
   path: '/createNewUser',
   handler: (request, reply) => {
-    console.log(request.payload, typeof request.payload, '<<<<<<<<<')
     const user = JSON.parse(request.payload).user
     const pass = JSON.parse(request.payload).pass
     const payload = {
