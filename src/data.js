@@ -1,29 +1,3 @@
-// const users = [{
-//   'users': [
-//     {
-//       'name': 'helen',
-//       'position': 'helen',
-//       'email': 'helen@helen.com',
-//       'password': 'password',
-//       'access_level': 3
-//     },
-//     {
-//       'name': 'rob',
-//       'position': 'SENCO',
-//       'email': 'rob@rob.com',
-//       'password': 'password',
-//       'access_level': 2
-//     },
-//     {
-//       'name': 'sam',
-//       'position': 'Teacher',
-//       'email': 'sam@sam.com',
-//       'password': 'password',
-//       'access_level': 1
-//     }
-//   ]
-// }]
-
 module.exports = {
   about: [
     {
