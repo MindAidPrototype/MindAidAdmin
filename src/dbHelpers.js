@@ -37,6 +37,28 @@ const deleteData = (db, collection, oldObject, callback) => {
   })
 }
 
+const insertObjectIntoArray = (db, collection, identifier, newObject, callback) => {
+  db.collection(collection).update({identifier}, {$push: {data: newObject}}, (err,res) => {
+    if (err) throw err
+    callback(res)
+  })
+}
+
+const deleteObjFromArray = (db, collection, identifier, oldObject, callback) => {
+  db.collection(collection).update({identifier}, {$pull: {data: oldObject}}, (err, res) => {
+    if (err) throw err
+    callback(res)
+  })
+}
+
+const editObjInArray = (db, collection, identifier, oldObject, newObject, callback) => {
+  db.collection(collection).update({ identifier, data: oldObject },
+    { $set: { 'data.$': newObject } }, (err, res) => {
+      if (err) throw err
+      callback(res)
+    })
+}
+
 module.exports = {
   dropAllCollections,
   insertObjectIntoCollection,
@@ -44,4 +66,7 @@ module.exports = {
   getPageData,
   editData,
   deleteData,
+  insertObjectIntoArray,
+  deleteObjFromArray,
+  editObjInArray
 }
