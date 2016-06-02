@@ -1,8 +1,7 @@
 module.exports = {
-  method: 'post',
+  method: 'get',
   path: '/logout',
   handler: (request, reply) => {
-    reply('clearing cookie').state('cookie', null, {ttl: 0})
+    reply.redirect('/login').state('cookie', null, {ttl: 0})
   }
 }
-

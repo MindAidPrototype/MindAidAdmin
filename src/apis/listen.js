@@ -9,7 +9,7 @@ module.exports = {
   handler: (request, reply) => {
     MongoClient.connect(url, (err, db) => {
       if (err) throw err
-      getPageData(db, 'listen', (res) => {
+      getPageData(db, 'conversationStarters', (res) => {
         reply(res)
       })
     })

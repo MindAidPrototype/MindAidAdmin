@@ -1,9 +1,9 @@
-const addNewSection = () => {
+const addNewSection = function () {
   const listenSections = document.getElementsByClassName('listenSection')
   const indexOfNewSection = Array.from(listenSections).length - 1
   document.getElementsByClassName('hider')[0].className = ''
   document.getElementById('newSection').classList.add('hider')
-  document.getElementById('saveNewSection').addEventListener('click', () => {
+  document.getElementById('saveNewSection').addEventListener('click', function () {
     const inputFields = Array.from(listenSections[indexOfNewSection].children)
     const newData = { question: inputFields[0].value }
     updatePageContent('/listen/', newData) //eslint-disable-line
@@ -11,7 +11,7 @@ const addNewSection = () => {
   document.getElementById('cancelNewSection').addEventListener('click', cancelContent) //eslint-disable-line
 }
 
-const createEditSection = (i) => {
+const createEditSection = function (i) {
   const sectionBeingEdited = document.getElementsByClassName('listenSection')[i]
   // save data before changes are made
   const oldData = { question: sectionBeingEdited.children[0].innerHTML }
@@ -26,7 +26,7 @@ const createEditSection = (i) => {
 
   //add event listener to save button
   const saveButton = document.getElementsByClassName('buttonsContainer')[i].children[2]
-  saveButton.addEventListener('click', () => {
+  saveButton.addEventListener('click', function () {
     //array of input field objects
     const inputFields = Array.from(sectionBeingEdited.children)
     const newData = {
@@ -38,8 +38,8 @@ const createEditSection = (i) => {
 
 if(document.getElementsByClassName('editButton').length) {
   const editButton = Array.from(document.getElementsByClassName('editButton'))
-  editButton.forEach((el, i) => {
-    el.addEventListener('click', () => {
+  editButton.forEach(function (el, i) {
+    el.addEventListener('click', function () {
       createEditSection(i)
     })
   })
@@ -47,8 +47,8 @@ if(document.getElementsByClassName('editButton').length) {
 
 if(document.getElementsByClassName('deleteButton').length) {
   const deleteButton = Array.from(document.getElementsByClassName('deleteButton'))
-  deleteButton.forEach((el, i) => {
-    el.addEventListener('click', () => {
+  deleteButton.forEach(function (el, i) {
+    el.addEventListener('click', function () {
       const sectionBeingDeleted = document.getElementsByClassName('listenSection')[i]
       const oldData = { question: sectionBeingDeleted.children[0].innerHTML }
       updatePageContent('/listen/', null, oldData) //eslint-disable-line
