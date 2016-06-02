@@ -4,10 +4,10 @@
   <div class="learnSection">
     <h2>{{this.category}}</h2>
     <h3>{{this.subtitle}}</h3>
+    <h5>{{this.link}}</h5>
     {{#each this.thingsToKnow}}
       <p>{{this}}</p>
     {{/each}}
-    <p>link to further reading: <a href={{this.link}}>{{this.link}}</a></p>
   </div>
   <div class="buttonsContainer">
     <button class="editButton">edit</button>
@@ -20,6 +20,7 @@
   <div class="learnSection">
     <input placeholder="category" />
     <input placeholder="subtitle">
+    <input placeholder="link">
     <input placeholder="thing to know" />
   </div>
   <button id='addParagraphButton'>Add another thing</button>
