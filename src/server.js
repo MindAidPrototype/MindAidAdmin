@@ -36,6 +36,7 @@ const routes = [
   require('./routes/editAbout.js')(Cookie),
   require('./routes/editLearn.js')(Cookie),
   require('./routes/editListen.js')(Cookie),
+  require('./routes/editRefer.js')(Cookie),
   require('./routes/learn.js')(Cookie),
   require('./routes/listen.js')(Cookie),
   require('./routes/refer.js')(Cookie),

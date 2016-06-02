@@ -4,7 +4,8 @@
   <div class="learnSection">
     <h2>{{this.category}}</h2>
     <h3>{{this.subtitle}}</h3>
-    {{#each this.things_to_know}}
+    <h5>{{this.link}}</h5>
+    {{#each this.thingsToKnow}}
       <p>{{this}}</p>
     {{/each}}
   </div>
@@ -19,6 +20,7 @@
   <div class="learnSection">
     <input placeholder="category" />
     <input placeholder="subtitle">
+    <input placeholder="link">
     <input placeholder="thing to know" />
   </div>
   <button id='addParagraphButton'>Add another thing</button>
