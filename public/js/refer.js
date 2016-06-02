@@ -14,10 +14,10 @@ const createEditSection = (i, sectionBeingEdited) => {
   const saveButton = document.getElementsByClassName('buttonsContainer')[i].children[2]
   saveButton.addEventListener('click', () => {
     const newData = getNewData(sectionBeingEdited)
-    updateArray('/refer/', newData.identifier, newData.newData, oldData.oldData) //eslint-disable-line
+    updateArray('/refer/', newData.identifier, newData.data, oldData.data) //eslint-disable-line
   })
 
-  if(oldData.identifier === 'community') {
+  if(oldData.identifier === 'community' || oldData.identifier === 'selfReferral') {
     createAddbutton(sectionBeingEdited, i, 'add another link') //eslint-disable-line
   }
 }
@@ -38,7 +38,7 @@ if(document.getElementsByClassName('deleteButton').length) {
   deleteButton.forEach((el, i) => {
     el.addEventListener('click', () => {
       const oldData = getOldData(i)
-      updateArray('/refer/', oldData.identifier, null, oldData.oldData) //eslint-disable-line
+      updateArray('/refer/', oldData.identifier, null, oldData.data) //eslint-disable-line
     })
   })
 }
@@ -53,86 +53,127 @@ if(document.getElementsByClassName('newSectionButton')) {
 }
 
 const addNewSection = function (i) {
+  const newSection = document.getElementsByClassName('newSection')[i]
+  const newInputFields = document.getElementsByClassName('newInput')[i]
+  const newInputClasses = Array.from(newInputFields.classList)
   document.getElementsByClassName('newSection')[i].classList = 'newSection'
   document.getElementsByClassName('newSectionButton')[i].classList.add('hide')
   document.getElementsByClassName('saveNewButton')[i].addEventListener('click', () => {
-    const newSection = document.getElementsByClassName('newInput')[i]
-    const newData = getNewData(newSection)
-    updateArray('/refer/', newData.identifier, newData.newData) //eslint-disable-line
+    const newData = getNewData(newInputFields)
+    updateArray('/refer/', newData.identifier, newData.data) //eslint-disable-line
   })
+
+  if (newInputClasses.indexOf('community') > -1 || newInputClasses.indexOf('selfReferral') > -1 ){
+    newSection.getElementsByClassName('addLinkButton')[0].addEventListener('click', function() {
+      const div = createLinkInputsDiv() // eslint-disable-line
+      newSection.getElementsByClassName('links')[0].appendChild(div)
+    })
+  }
+
   document.getElementsByClassName('cancelNewSection')[i].addEventListener('click', cancelContent) //eslint-disable-line
 }
 
 const getOldData = function(i) {
+  var data = {}
   const sectionBeingEdited = document.getElementsByTagName('section')[i]
-  const classes = Array.from(sectionBeingEdited.classList)
-  var properties, oldData ={}, identifier
-  if (classes.indexOf('national') > -1) {
-    identifier = 'national'
-    properties = ['section','phone','link','advice']
-    properties.forEach(function(el, j) {
-      oldData[el] = sectionBeingEdited.children[j].children[0].innerHTML
+  const details = getIdentifierAndPropNames(sectionBeingEdited)
+  if (details.identifier === 'national' || details.identifier === 'school') {
+    details.properties.forEach(function(el, j) {
+      data[el] = sectionBeingEdited.children[j].children[0].innerHTML
     })
-  } else if (classes.indexOf('school') > -1) {
-    identifier = 'school'
-    properties = ['name','position','description','email', 'phone']
-    properties.forEach(function(el, j) {
-      oldData[el] = sectionBeingEdited.children[j].children[0].innerHTML
-    })
-  } else if (classes.indexOf('community') > -1) {
-    identifier = 'community'
-    properties = ['name','position','description','email', 'phone', 'links']
-    properties.forEach(function(prop, j) {
-      if (properties[j] === 'links') {
-        oldData[prop] = Array.from(sectionBeingEdited.children[j].children).map(function(child) {
-          return { name: child.children[0].children[0].innerHTML,
-            link: child.children[1].children[0].innerHTML }
+  } else if (details.identifier === 'community' || details.identifier === 'selfReferral') {
+    details.properties.forEach(function(prop, j) {
+      if (prop === 'links') {
+        const linksDiv = Array.from(sectionBeingEdited.getElementsByClassName('links')[0].children)
+        data[prop] = linksDiv.map(function(div) {
+          return { name: div.children[0].children[0].innerHTML,
+            link: div.children[1].children[0].innerHTML }
         })
       } else {
-        oldData[prop] = sectionBeingEdited.children[j].children[0].innerHTML
+        data[prop] = sectionBeingEdited.children[j].children[0].innerHTML
       }
     })
-    console.log(oldData)
   }
   return {
-    identifier,
-    oldData
+    identifier: details.identifier,
+    data
+  }
+}
+const getIdentifierAndPropNames = function(sectionBeingEdited) {
+  const classes = Array.from(sectionBeingEdited.classList)
+  if (classes.indexOf('national') > -1) {
+    return {
+      identifier: 'national',
+      properties: ['section','phone','link','advice']
+    }
+  } else if (classes.indexOf('school') > -1) {
+    return {
+      identifier: 'school',
+      properties: ['name','position','description','email', 'phone']
+    }
+  } else if (classes.indexOf('community') > -1) {
+    return {
+      identifier: 'community',
+      properties: ['name','position','description','email', 'phone', 'links']
+    }
+  } else if (classes.indexOf('selfReferral') > -1) {
+    return {
+      identifier: 'selfReferral',
+      properties: ['serviceName','description','email', 'links']
+    }
   }
 }
 
 const getNewData = function(sectionBeingEdited) {
-  const classes = Array.from(sectionBeingEdited.classList)
-  var properties, newData = {}, identifier
-  if (classes.indexOf('national') > -1) {
-    identifier = 'national'
-    properties = ['section','phone','link','advice']
-    properties.forEach(function(el, i) {
-      newData[el] = sectionBeingEdited.children[i].lastChild.value
+  var data = {}
+  const details = getIdentifierAndPropNames(sectionBeingEdited)
+  if (details.identifier === 'national' || details.identifier === 'school') {
+    details.properties.forEach(function(el, i) {
+      data[el] = sectionBeingEdited.children[i].lastChild.value
     })
-  } else if (classes.indexOf('school') > -1) {
-    identifier = 'school'
-    properties = ['name','position','description','email', 'phone']
-    properties.forEach(function(el, i) {
-      newData[el] = sectionBeingEdited.children[i].lastChild.value
-    })
-  } else if (classes.indexOf('community') > -1) {
-    identifier = 'community'
-    properties = ['name','position','description','email', 'phone', 'links']
-    properties.forEach(function(prop, j) {
+  } else if (details.identifier === 'community' || details.identifier === 'selfReferral') {
+    details.properties.forEach(function(prop, j) {
       if (prop === 'links') {
         const linksDiv = Array.from(sectionBeingEdited.getElementsByClassName('links')[0].children)
-        newData[prop] = linksDiv.map(function(div) {
+        data[prop] = linksDiv.map(function(div) {
           return { name: div.children[0].lastChild.value,
             link: div.children[1].lastChild.value }
         })
       } else {
-        newData[prop] = sectionBeingEdited.children[j].lastChild.value
+        data[prop] = sectionBeingEdited.children[j].lastChild.value
       }
     })
-    console.log(newData.links, '<<<<<<<')
   }
   return {
-    identifier,
-    newData
+    identifier: details.identifier,
+    data
   }
+}
+
+const createAddbutton = function(sectionBeingAppendedTo, i, innerhtml) { //eslint-disable-line
+  const addButton = document.createElement('button')
+  addButton.innerHTML = innerhtml
+  addButton.addEventListener('click', function() {
+    const div = createLinkInputsDiv()
+    sectionBeingAppendedTo.getElementsByClassName('links')[0].appendChild(div)
+  })
+  document.getElementsByClassName('buttonsContainer')[i].appendChild(addButton)
+}
+
+const createLinkInputsDiv = function () {
+  const div = document.createElement('div')
+  const newLinkName = document.createElement('p')
+  newLinkName.innerHTML = 'Link name: '
+  const newLinkNameInput = document.createElement('input')
+  newLinkName.appendChild(newLinkNameInput)
+  div.appendChild(newLinkName)
+
+  const newLink = document.createElement('p')
+  newLink.innerHTML = 'Link: '
+  const newLinkInput = document.createElement('input')
+  newLink.appendChild(newLinkInput)
+  div.appendChild(newLink)
+
+  return div
+
 }

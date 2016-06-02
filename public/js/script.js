@@ -38,11 +38,6 @@ const updateArray = (pagePath, identifier, newData, oldData) => { //eslint-disab
       oldData,
       newData
     }))
-    console.log(JSON.stringify({
-      identifier,
-      oldData,
-      newData
-    }))
   } else if (oldData) {
     xhr.open('post', pagePath + 'delete')
     xhr.send(JSON.stringify({
@@ -72,29 +67,6 @@ const createSaveAndCancelButtons = (i) => { //eslint-disable-line
   cancelButton.innerHTML = 'cancel'
   cancelButton.addEventListener('click', cancelContent) //eslint-disable-line
   document.getElementsByClassName('buttonsContainer')[i].appendChild(cancelButton)
-}
-
-const createAddbutton = function(sectionBeingAppendedTo, i, innerhtml) { //eslint-disable-line
-  const addButton = document.createElement('button')
-  addButton.innerHTML = innerhtml
-  addButton.addEventListener('click', function() {
-
-    const div = document.createElement('div')
-    const newLinkName = document.createElement('p')
-    newLinkName.innerHTML = 'Link name: '
-    const newLinkNameInput = document.createElement('input')
-    newLinkName.appendChild(newLinkNameInput)
-    div.appendChild(newLinkName)
-
-    const newLink = document.createElement('p')
-    newLink.innerHTML = 'Link: '
-    const newLinkInput = document.createElement('input')
-    newLink.appendChild(newLinkInput)
-    div.appendChild(newLink)
-
-    sectionBeingAppendedTo.getElementsByClassName('links')[0].appendChild(div)
-  })
-  document.getElementsByClassName('buttonsContainer')[i].appendChild(addButton)
 }
 
 const addNewParagraph = (classname, i) => { //eslint-disable-line
