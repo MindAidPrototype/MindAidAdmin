@@ -30,6 +30,7 @@ const routes = [
   require('./apis/refer.js'),
   require('./apis/learn.js'),
   require('./apis/listen.js'),
+  require('./routes/newUser.js')(Cookie),
   require('./routes/editAbout.js')(Cookie),
   require('./routes/editLearn.js')(Cookie),
   require('./routes/editListen.js')(Cookie),

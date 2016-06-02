@@ -129,6 +129,10 @@ body {
   background-color: pink;
 }
 
+#newUserContainer {
+  margin: 100px 100px;
+}
+
 @media screen and (max-width: 500px) {
   #logo {
     height: 15vw;
