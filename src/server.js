@@ -9,6 +9,7 @@ require('env2')('config.env')
 const Cookie = process.env.COOKIE
 const username = process.env.USERNAME
 const password = process.env.PASSWORD
+const newUserSecret = process.env.NEWUSERSECRET
 
 server.connection({port})
 
@@ -30,6 +31,8 @@ const routes = [
   require('./apis/refer.js'),
   require('./apis/learn.js'),
   require('./apis/listen.js'),
+  require('./routes/newUser.js')(Cookie),
+  require('./routes/createNewUser.js')(Cookie, newUserSecret),
   require('./routes/editAbout.js')(Cookie),
   require('./routes/editLearn.js')(Cookie),
   require('./routes/editListen.js')(Cookie),
