@@ -24,9 +24,9 @@ const updatePageContent = function (pagePath, newData, oldData) { //eslint-disab
   }
 }
 
-const updateArray = (pagePath, identifier, newData, oldData) => { //eslint-disable-line
+const updateArray = function (pagePath, identifier, newData, oldData) { //eslint-disable-line
   const xhr = new XMLHttpRequest()
-  xhr.onreadystatechange = () => {
+  xhr.onreadystatechange = function () {
     if(xhr.readyState === 4 && xhr.status === 200) {
       location.reload()
     }
