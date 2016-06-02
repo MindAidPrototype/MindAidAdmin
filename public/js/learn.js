@@ -11,7 +11,8 @@ const addNewSection = function () {
     const newData = {
       category: inputFields[0].value,
       subtitle: inputFields[1].value,
-      things_to_know: inputFields.map(function (inputObj) {return inputObj.value}).slice(2)
+      link: inputFields[2].value,
+      thingsToKnow: inputFields.map(function (inputObj) {return inputObj.value}).slice(3)
     }
     updatePageContent('/learn/', newData) //eslint-disable-line
   })
@@ -25,7 +26,8 @@ const createEditSection = function (i) {
   const oldData = {
     category: sectionBeingEdited.children[0].innerHTML,
     subtitle: sectionBeingEdited.children[1].innerHTML,
-    things_to_know: paragraphs.map(function(para) {return para.innerHTML})
+    link: sectionBeingEdited.children[2].innerHTML,
+    thingsToKnow: paragraphs.map(function(para) {return para.innerHTML}),
   }
   const newParagraphButton = document.createElement('button')
   newParagraphButton.innerHTML = 'New paragraph'
@@ -46,8 +48,12 @@ const createEditSection = function (i) {
   subtitle.value = oldData.subtitle
   sectionBeingEdited.appendChild(subtitle)
 
+  const link = document.createElement('input')
+  link.value = oldData.link
+  sectionBeingEdited.appendChild(link)
+
   var paragraphInput
-  oldData.things_to_know.forEach(function (oldPara) {
+  oldData.thingsToKnow.forEach(function (oldPara) {
     paragraphInput = document.createElement('input')
     paragraphInput.value = oldPara
     sectionBeingEdited.appendChild(paragraphInput)
@@ -61,7 +67,8 @@ const createEditSection = function (i) {
     const newData = {
       category: inputFields[0].value,
       subtitle: inputFields[1].value,
-      things_to_know: inputFields.map(function (inputObj) {return inputObj.value}).slice(2)
+      link: inputFields[2].value,
+      thingsToKnow: inputFields.map(function (inputObj) {return inputObj.value}).slice(3)
     }
     updatePageContent('/learn/', newData, oldData) //eslint-disable-line
   })
@@ -84,8 +91,10 @@ if(document.getElementsByClassName('deleteButton').length) {
       const oldData = {
         category: sectionBeingDeleted.children[0].innerHTML,
         subtitle: sectionBeingDeleted.children[1].innerHTML,
-        things_to_know: Array.from(sectionBeingDeleted.children).map(function (pTag) {return pTag.innerHTML}).slice(2)
+        link: sectionBeingDeleted.children[2].innerHTML,
+        thingsToKnow: Array.from(sectionBeingDeleted.children).map(function (pTag) {return pTag.innerHTML}).slice(3)
       }
+      console.log(oldData, '<oldData')
       updatePageContent('/learn/', null, oldData) //eslint-disable-line
     })
   })
