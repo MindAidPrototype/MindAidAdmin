@@ -34,15 +34,17 @@ module.exports = {
     {
       category: 'The Aggressive/Difficult Child',
       subtitle: '10 things about anxiety to help you help your students',
-      'things_to_know': ['a b c d e f', 'g h i']
+      thingsToKnow: ['a b c d e f', 'g h i'],
+      link: 'https://www.minded.org.uk/mod/page/view.php?id=22'
     },
     {
       category: 'The Sad And Isolated Child',
       subtitle: 'Things about sad and isolated children',
-      'things_to_know': [
+      thingsToKnow: [
         'Young people get sad, tearful, and lonely. This is entirely normal, and to be expected.',
         'fbjkebvrejkberjgkrelb gjerk'
-      ]
+      ],
+      link: 'https://www.minded.org.uk/mod/page/view.php?id=22'
     }
   ],
   questions: [

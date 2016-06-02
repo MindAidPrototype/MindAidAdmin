@@ -4,9 +4,10 @@
   <div class="learnSection">
     <h2>{{this.category}}</h2>
     <h3>{{this.subtitle}}</h3>
-    {{#each this.things_to_know}}
+    {{#each this.thingsToKnow}}
       <p>{{this}}</p>
     {{/each}}
+    <p>link to further reading: <a href={{this.link}}>{{this.link}}</a></p>
   </div>
   <div class="buttonsContainer">
     <button class="editButton">edit</button>
