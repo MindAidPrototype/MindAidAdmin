@@ -1,7 +1,7 @@
 const addNewSection = function () {
   const listenSections = document.getElementsByClassName('listenSection')
   const indexOfNewSection = Array.from(listenSections).length - 1
-  document.getElementsByClassName('hider')[0].className = ''
+  document.getElementsByClassName('hide')[0].className = ''
   document.getElementById('newSection').classList.add('hider')
   document.getElementById('saveNewSection').addEventListener('click', function () {
     const inputFields = Array.from(listenSections[indexOfNewSection].children)
