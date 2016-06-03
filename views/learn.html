@@ -1,31 +1,37 @@
-<h1>hello learn page</h1>
+<div id="aboutCo" class="panel panel-default">
 
-{{#each learn}}
-  <div class="learnSection">
-    <h2>{{this.category}}</h2>
-    <h3>{{this.subtitle}}</h3>
-    <h5>{{this.link}}</h5>
-    {{#each this.thingsToKnow}}
-      <p>{{this}}</p>
+  <h1>Learn Page</h1>
+  <div class="pannel-body">
+    {{#each learn}}
+      <div class="learnSection">
+        <h2>{{this.category}}</h2>
+        <h3>{{this.subtitle}}</h3>
+        <h5>{{this.link}}</h5>
+        {{#each this.thingsToKnow}}
+          <p>{{this}}</p>
+        {{/each}}
+      </div>
+      <div class="buttonsContainer btn-group">
+        <button type="button" class="btn btn-default editButton">Edit</button>
+        <button type="button" class="btn btn-danger deleteButton">Delete</button>
+      </div>
     {{/each}}
   </div>
-  <div class="buttonsContainer">
-    <button class="editButton">edit</button>
-    <button class="deleteButton">delete</button>
-  </div>
-{{/each}}
 
-<button id="newSection" class="newSectionButton">New Section</button>
-<div id='newInput' class='hide'>
-  <div class="learnSection">
-    <input placeholder="category" />
-    <input placeholder="subtitle">
-    <textarea placeholder="link" rows="1" cols="50"></textarea>
-    <textarea placeholder="thing to know" rows="4" cols="50"></textarea>
+  <div class="btn-group">
+    <button type="button" id="newSection" class="btn btn-success saveButton newSectionButton">New Section</button>
   </div>
-  <button id='addParagraphButton'>Add another thing</button>
-  <button id='saveNewSection' class="saveButton">save</button>
-  <button id='cancelNewSection' class="cancelButton">cancel</button>
+  <div id='newInput' class='hide'>
+    <div class="learnSection">
+      <input placeholder="category" />
+      <input placeholder="subtitle">
+      <textarea placeholder="link" rows="1" cols="50"></textarea>
+      <textarea placeholder="thing to know" rows="4" cols="50"></textarea>
+    </div>
+    <button id='addParagraphButton'>Add another thing</button>
+    <button id='saveNewSection' class="saveButton">save</button>
+    <button id='cancelNewSection' class="cancelButton">cancel</button>
+  </div>
 </div>
 
 <script src="../public/js/learn.js"></script>
