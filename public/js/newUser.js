@@ -7,6 +7,7 @@ function createNewUser() {
     user,
     pass
   }))
+  location.reload()
 }
 
 document.getElementById('newUserButton').addEventListener('click', createNewUser)
