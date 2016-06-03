@@ -5,11 +5,6 @@ const dropAllCollections = (db, collections, callback) => {
   })
 }
 
-const emptySingleCollection = (db, collection, callback) => {
-  db.collection(collection).remove({})
-  callback()
-}
-
 const insertObjectIntoCollection = (db, collection, data, callback) => {
   db.collection(collection).insert(data, (err, result) => {
     if(err) throw err
@@ -62,7 +57,6 @@ const editObjInArray = (db, collection, identifier, oldObject, newObject, callba
 module.exports = {
   dropAllCollections,
   insertObjectIntoCollection,
-  emptySingleCollection,
   getPageData,
   editData,
   deleteData,

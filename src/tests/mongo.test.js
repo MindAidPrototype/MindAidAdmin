@@ -21,20 +21,6 @@ tape('test that data can be added to a collection', t => {
   })
 })
 
-tape('empty a single collection', t => {
-  MongoClient.connect(url, (err, db) => {
-    dbHelpers.emptySingleCollection(db, 'about', () => {
-      db.collection('about').find({}).toArray((err2, res) => {
-        const expected = []
-        const actual = res
-        t.deepEqual(actual, expected, 'about collection emptied')
-        t.end()
-        db.close()
-      })
-    })
-  })
-})
-
 tape('checks if a collection has new inserted data in it', t => {
   MongoClient.connect(url, (err, db) => {
     const data = {key: 'value'}
