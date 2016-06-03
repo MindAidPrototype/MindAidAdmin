@@ -71,6 +71,6 @@ const createSaveAndCancelButtons = function (i) { //eslint-disable-line
 }
 
 const addNewParagraph = function (classname, i) { //eslint-disable-line
-  const newInput = document.createElement('input')
+  const newInput = document.createElement('textarea')
   document.getElementsByClassName(classname)[i].appendChild(newInput)
 }
