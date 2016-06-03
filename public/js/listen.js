@@ -20,7 +20,7 @@ const createEditSection = function (i) {
   createSaveAndCancelButtons(i) //eslint-disable-line
 
   sectionBeingEdited.innerHTML = ''
-  const input = document.createElement('input')
+  const input = document.createElement('textarea')
   input.value = oldData.question
   sectionBeingEdited.appendChild(input)
 
