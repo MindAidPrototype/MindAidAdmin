@@ -48,13 +48,13 @@ const createEditSection = function (i) {
   subtitle.value = oldData.subtitle
   sectionBeingEdited.appendChild(subtitle)
 
-  const link = document.createElement('input')
+  const link = document.createElement('textarea')
   link.value = oldData.link
   sectionBeingEdited.appendChild(link)
 
   var paragraphInput
   oldData.thingsToKnow.forEach(function (oldPara) {
-    paragraphInput = document.createElement('input')
+    paragraphInput = document.createElement('textarea')
     paragraphInput.value = oldPara
     sectionBeingEdited.appendChild(paragraphInput)
   })

@@ -42,7 +42,7 @@ const createEditAboutSection = function (i) {
   //create specific input fields and populate with current paragraphs
   var paragraphInput
   oldData.paragraph.forEach(function (oldPara) {
-    paragraphInput = document.createElement('input')
+    paragraphInput = document.createElement('textarea')
     paragraphInput.value = oldPara
     sectionBeingEdited.appendChild(paragraphInput)
   })
