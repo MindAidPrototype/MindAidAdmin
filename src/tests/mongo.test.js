@@ -27,6 +27,7 @@ tape('checks if a collection has new inserted data in it', t => {
     db.collection('questions').insert(data, (error) => {
       if(error) throw error
       db.collection('questions').find({}).toArray((err2, res) => {
+        console.log(res)
         const lastIndex = (res.length - 1)
         const expected = 'value'
         const actual = res[lastIndex].key
@@ -46,7 +47,7 @@ tape('test that data can be updated', t => {
     db.collection('learn').insert(oldData, (error) => {
       if (error) throw error
       dbHelpers.editData(db, 'learn', oldData, newData, (res) => {
-        console.log(res, '<<<<<<<<<<<<<<<<<res')
+        console.log(res)
         actual = res.result.nModified
         t.ok(actual === 1, 'data updated')
         t.end()
