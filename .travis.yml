@@ -6,3 +6,5 @@ services:
 env:
   global:
     - MONGODB_VERSION=3.2.5
+before_script:
+  - mongo --eval "use mindaidtest"
