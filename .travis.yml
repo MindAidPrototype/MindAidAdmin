@@ -1,3 +1,4 @@
+sudo: true
 language: node_js
 node_js:
   - "5"
@@ -6,5 +7,3 @@ services:
 env:
   global:
     - MONGODB_VERSION=3.2.5
-before_script:
-  - mongo --eval "use mindaidtest"
