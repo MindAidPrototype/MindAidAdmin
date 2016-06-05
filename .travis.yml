@@ -1,0 +1,9 @@
+sudo: true
+language: node_js
+node_js:
+  - "5"
+services:
+  - mongodb
+env:
+  global:
+    - MONGODB_VERSION=3.2.5
