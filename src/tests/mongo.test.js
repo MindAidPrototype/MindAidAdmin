@@ -46,6 +46,7 @@ tape('test that data can be updated', t => {
     db.collection('learn').insert(oldData, (error) => {
       if (error) throw error
       dbHelpers.editData(db, 'learn', oldData, newData, (res) => {
+        console.log(res, '<<<<<<<<<<<<<<<<<res')
         actual = res.result.nModified
         t.ok(actual === 1, 'data updated')
         t.end()
