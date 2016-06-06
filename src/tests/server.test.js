@@ -117,7 +117,7 @@ tape('tests params* route to see if it findes the correct public files', t => {
 //     updatedData: {'colour': 'pink', 'length': 3},
 //     newData: {'colour': 'pink', 'length': 3}
 //   }
-// 
+
 //   server.inject(createOptions('save', {oldData: data.oldData, newData: data.updatedData}), res => {
 //     const actualStatusCode = res.statusCode
 //     const expectedStatusCode = 200
