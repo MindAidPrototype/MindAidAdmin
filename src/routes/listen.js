@@ -11,7 +11,6 @@ module.exports = (Cookie) => ({
     MongoClient.connect(url, (err, db) => {
       if (err) throw err
       getPageData(db, 'conversationStarters', (res) => {
-        console.log(res, '<=======res')
         reply.view('listen', {conversationStarters: res})
         db.close()
       })
