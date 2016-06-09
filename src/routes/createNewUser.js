@@ -14,7 +14,7 @@ module.exports = (Cookie, newUserSecret) => ({
     if(request.state.cookie === Cookie) {
       const options = {
         method: 'post',
-        hostname: 'mindaid.herokuapp.com/',
+        hostname: 'mindaid.herokuapp.com',
         path: '/createNewUser'
       }
       const req = http.request(options)
