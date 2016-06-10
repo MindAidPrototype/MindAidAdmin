@@ -5,7 +5,6 @@ const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/mindaid'
 
 const data = require('../data.js')
 const collections = Object.getOwnPropertyNames(data)
-console.log(collections)
 
 module.exports = {
   method: 'GET',
