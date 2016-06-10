@@ -43,16 +43,6 @@ body {
   margin: 20px 0;
 }
 
-.list-group {
-  margin-top: 118px;
-  margin-left: 450px;
-  margin-right: 450px;
-}
-
-#list-group-item a {
-  align-content: center;
-}
-
 .form-signin {
     max-width: 330px;
     padding: 15px;
@@ -170,4 +160,8 @@ body {
 
 .hide {
   display: none;
+}
+
+#homeList {
+  margin-top: 30px;
 }

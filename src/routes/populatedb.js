@@ -12,14 +12,18 @@ module.exports = {
   handler: function (request, reply) {
     MongoClient.connect(url, (err, db) => {
       if (err) throw err
-      dbHelpers.dropAllCollections(db, collections, (collection) => {
-        dbHelpers.insertObjectIntoCollection(db, collection, data[collection], () => {
-          if(collection === collections[collections.length -1]) {
-            db.close()
-            reply('populated b')
-          }
+      if(collections.length) {
+        dbHelpers.dropAllCollections(db, collections, (collection) => {
+          dbHelpers.insertObjectIntoCollection(db, collection, data[collection], () => {
+            if(collection === collections[collections.length -1]) {
+              db.close()
+              reply('populated b')
+            }
+          })
         })
-      })
+      } else {
+        reply('no data')
+      }
     })
   }
 }
