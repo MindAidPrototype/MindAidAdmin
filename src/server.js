@@ -40,7 +40,6 @@ const routes = [
   require('./routes/learn.js')(Cookie),
   require('./routes/listen.js')(Cookie),
   require('./routes/refer.js')(Cookie),
-  require('./routes/remind.js')(Cookie),
   require('./routes/populatedb.js'),
   require('./routes/publicdir.js'),
 ]
