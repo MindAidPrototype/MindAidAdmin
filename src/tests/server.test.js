@@ -3,7 +3,7 @@ const server = require('../server.js')
 require('env2')('./config.env')
 const encoded = process.env.ENCODED
 
-const endPoints = ['index', 'questions', 'about', 'learn', 'listen', 'refer', 'remind']
+const endPoints = ['index', 'questions', 'about', 'learn', 'listen', 'refer']
 const contents = [
   '<ul id="homeList"',
   'questions',
@@ -11,7 +11,6 @@ const contents = [
   'Learn Page',
   'listen page',
   'refer page',
-  'remind page'
 ]
 
 const combined = endPoints.map((endpoint, i) => ({endpoint, content: contents[i]}))
